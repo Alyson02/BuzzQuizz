@@ -127,9 +127,17 @@ h2 {
 .todos-quizzes {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
-  
+  justify-content: start;
+  column-gap: 15px; 
 }
+
+.todos-meus-quizzes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start; 
+    column-gap: 15px;
+  }
+
 .todos-quizzes > div {
   flex: 0 1 340px;
 }

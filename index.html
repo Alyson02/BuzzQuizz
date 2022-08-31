@@ -22,18 +22,27 @@
     <!-- ========================================================HEADER====================================================== -->
     <div class="container">
     <!-- ================================================CAIXINHA CASO NÃO TENHA CRIADO QUIZZ====================================================== -->
-      <div class="criar-quizz">
+      <div class="criar-quizz escondido">
         <div class="frase">Você não criou nenhum Quizz ainda :(</div>
-        <div class="botao-criar">Criar Quizz</div>
+        <div class="botao-criar" onclick="criarQuizz()">Criar Quizz</div>
       </div>
     <!-- ================================================CAIXINHA CASO NÃO TENHA CRIADO QUIZZ====================================================== -->
     <!--####################################################CAIXINHA CASO TENHA CRIADO##################################################-->  
     <div class="seus-quizzes">
         <div class="titulo-seus-quizzes">
             <h2>Seus Quizzes </h2>
-            <ion-icon name="add-circle"></ion-icon>
+            <ion-icon name="add-circle" onclick="criarQuizz()"></ion-icon>
         </div>
-
+        <div class="todos-quizzes">
+        <div class="quizz">
+            <img src="./assets/imagens/simpsons.png" />
+            <div class="texto-quizz">Acerte os personagens corretos dos Simpsons e prove seu amor!</div>
+          </div>
+          <div class="quizz">
+            <img src="./assets/imagens/preguiça.png" />
+            <div class="texto-quizz">O quanto você é de boas?</div>
+          </div>
+        </div>
     </div>
     <!--####################################################CAIXINHA CASO TENHA CRIADO##################################################-->
     

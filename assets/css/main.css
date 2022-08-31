@@ -6,9 +6,7 @@ body {
   font-family: "Roboto";
 }
 
-.escondido{
-    display:none;
-}
+
 
 .header {
   position: fixed;
@@ -22,6 +20,7 @@ body {
   align-items: center;
   justify-content: center;
   cursor:pointer;
+  z-index:2;
   
 }
 
@@ -109,6 +108,7 @@ h2 {
   /* ##########################=====Aqui o layout da segunda tela que aparece somente quando o user já criou quizzes=======#################### */
 .seus-quizzes {
     width:100%;
+    margin-bottom: 48px;
 }
 .titulo-seus-quizzes {
     
@@ -121,6 +121,7 @@ h2 {
     font-size: 30px;
     color: #EC362D;
     align-items: left;
+    margin-left: 17px;
 
 }
 .todos-quizzes {
@@ -161,4 +162,7 @@ bottom: 7px;
 left:18px;
 
 
+}
+.escondido{
+    display:none;
 }

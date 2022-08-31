@@ -22,16 +22,16 @@
     <!-- ========================================================HEADER====================================================== -->
     <div class="container">
     <!-- ================================================CAIXINHA CASO NÃO TENHA CRIADO QUIZZ====================================================== -->
-      <div class="criar-quizz">
+      <div class="criar-quizz"><!--AQUI PODEMOS ADICIONAR A CLASSE 'escondido' se a pessoa já criou pelo menos 1 quizz-->
         <div class="frase">Você não criou nenhum Quizz ainda :(</div>
         <div class="botao-criar" onclick="criarQuizz()">Criar Quizz</div>
       </div>
     <!-- ================================================CAIXINHA CASO NÃO TENHA CRIADO QUIZZ====================================================== -->
-    <!--####################################################CAIXINHA CASO TENHA CRIADO##################################################-->  
+    <!--####################################################CAIXINHA CASO TENHA CRIADO QUIZZES##################################################-->  
     <div class="seus-quizzes">
-        <div class="titulo-seus-quizzes">
+        <div class="titulo-seus-quizzes"><!--AQUI PODEMOS ADICIONAR A CLASSE 'escondido' se a pessoa ainda não criou quizzes-->
             <h2>Seus Quizzes </h2>
-            <ion-icon name="add-circle" onclick="criarQuizz()"></ion-icon>
+            <ion-icon name="add-circle" onclick="criarQuizz()"></ion-icon><!--Aqui vai ser o botão para criar um novo quizz-->
         </div>
         <div class="todos-meus-quizzes">
         <div class="quizz">

@@ -1,3 +1,4 @@
+/* Configurações gerais - COMEÇO */
 * {
   box-sizing: border-box;
 }
@@ -5,13 +6,13 @@ body {
   background-color: #fafafa;
   font-family: "Roboto";
 }
+/* Configurações gerais - FIM */
 
-
-
+/* CABEÇALHO DO SITE */
 .header {
   position: fixed;
-  left:0;
-  top:0;
+  left: 0;
+  top: 0;
   background-color: #ec362d;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   width: 100%;
@@ -19,9 +20,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor:pointer;
-  z-index:2;
-  
+  cursor: pointer;
+  z-index: 2;
 }
 
 .header div {
@@ -33,7 +33,9 @@ body {
   letter-spacing: 0em;
   text-align: left;
 }
+/* CABEÇALHO DO SITE - FIM */
 
+/* CONTEÚDO DO SITE DAQUI PRA BAIXO */
 .container {
   max-width: 1051px;
   display: flex;
@@ -42,6 +44,7 @@ body {
   align-items: center;
   margin-top: 146px;
 }
+/* PARTE DO "VOCÊ AINDA NÃO CRIOU NENHUM QUIZZ... */
 .criar-quizz {
   width: 100%;
   height: 181px;
@@ -83,7 +86,9 @@ body {
   border: 1px dashed #ec362d;
   border-radius: 50px;
 }
+/* PARTE DO "VOCÊ AINDA NÃO CRIOU NENHUM QUIZZ... - FIM */
 
+/* H1 REMETE AO "TODOS OS QUIZZES" */
 h1 {
   font-family: "Roboto";
   width: 100%;
@@ -93,56 +98,63 @@ h1 {
   letter-spacing: 0em;
   text-align: left;
   margin-bottom: 0;
-  color: #000000;  
+  color: #000000;
 }
+/* --FIM-- */
+
+/* H2 REMETE AO "SEUS QUIZZES" */
 h2 {
-    font-family: "Roboto";
-    font-size: 20px;
-    font-weight: 700;
-    line-height: 23px;
-    letter-spacing: 0em;
-    text-align: left;
-    margin-bottom: 0;
-    color: #000000;  
-  }
-  /* ##########################=====Aqui o layout da segunda tela que aparece somente quando o user já criou quizzes=======#################### */
+  font-family: "Roboto";
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 23px;
+  letter-spacing: 0em;
+  text-align: left;
+  margin-bottom: 0;
+  color: #000000;
+}
+/* --FIM-- */
+/* =====Aqui o layout da segunda tela que aparece somente quando o user já criou quizzes======= */
 .seus-quizzes {
-    width:100%;
-    margin-bottom: 48px;
+  width: 100%;
+  margin-bottom: 48px;
 }
 .titulo-seus-quizzes {
-    
-    width:100%;
-    display:flex;
-    align-items: center;
-
+  width: 100%;
+  display: flex;
+  align-items: center;
 }
 .titulo-seus-quizzes ion-icon {
-    font-size: 30px;
-    color: #EC362D;
-    align-items: left;
-    margin-left: 17px;
-
+  font-size: 30px;
+  color: #ec362d;
+  align-items: left;
+  margin-left: 17px;
 }
+.todos-meus-quizzes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: start;
+  column-gap: 15px;
+}
+.todos-meus-quizzes > div {
+    flex: 0 1 340px;
+  }
+/* =====Aqui o layout da segunda tela que aparece somente quando o user já criou quizzes - FIM ======= */
+
+/* Container com todos os quizzes */
 .todos-quizzes {
   display: flex;
   flex-wrap: wrap;
   justify-content: start;
-  column-gap: 15px; 
+  column-gap: 15px;
 }
-
-.todos-meus-quizzes {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: start; 
-    column-gap: 15px;
-  }
 
 .todos-quizzes > div {
   flex: 0 1 340px;
 }
+/* Quizz, dentro dele temos uma imagem e um texto com a classe texto-quizz */
 .quizz {
-    position:relative;
+  position: relative;
 }
 .quizz img {
   max-width: 100%;
@@ -157,20 +169,19 @@ h2 {
   border-radius: 5px;
 }
 .texto-quizz {
-font-family: 'Roboto';
-width: 301px;
-font-size: 19px;
-font-weight: 400;
-line-height: 22px;
-letter-spacing: 0em;
-text-align: left;
-color:#ffffff;
-position:absolute;
-bottom: 7px;
-left:18px;
-
-
+  font-family: "Roboto";
+  width: 301px;
+  font-size: 19px;
+  font-weight: 400;
+  line-height: 22px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #ffffff;
+  position: absolute;
+  bottom: 7px;
+  left: 18px;
 }
-.escondido{
-    display:none;
+/* classe pra esconder as coisas e trocar de tela, vou deixando ela mais abaixo no codigo css */
+.escondido {
+  display: none;
 }

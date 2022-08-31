@@ -1,12 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quizz buzz</title>
-</head>
-<body>
-    <img src="./assets/imagens/5f237290-ecb3-46c0-bec6-72cab7239355.gif" alt="">
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BuzzQuizz</title>
+    <link rel="stylesheet" href="./assets/css/reset.css" />
+    <link rel="stylesheet" href="./assets/css/main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Righteous&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- ========================================================HEADER====================================================== -->
+    <header class="header" onclick="reload()">
+      <div>BuzzQuizz</div>
+    </header>
+    <!-- ========================================================HEADER====================================================== -->
+    <div class="container">
+    <!-- ================================================CAIXINHA CASO NÃO TENHA CRIADO QUIZZ====================================================== -->
+      <div class="criar-quizz">
+        <div class="frase">Você não criou nenhum Quizz ainda :(</div>
+        <div class="botao-criar">Criar Quizz</div>
+      </div>
+    <!-- ================================================CAIXINHA CASO NÃO TENHA CRIADO QUIZZ====================================================== -->
+      <h1>Todos os Quizzes</h1>
+
+      <!-- ========================================================SECTION CONTÉM O CONTAINER DOS DIVS====================================================== -->
+      <section class="todos-quizzes">
+        <div class="quizz">
+          <img src="./assets/imagens/simpsons.png" />
+        </div>
+        <div class="quizz">
+          <img src="./assets/imagens/simpsons.png" />
+        </div>
+        <div class="quizz">
+          <img src="./assets/imagens/simpsons.png" />
+        </div>
+        <div class="quizz">
+          <img src="./assets/imagens/simpsons.png" />
+        </div>
+        <div class="quizz">
+          <img src="./assets/imagens/simpsons.png" />
+        </div>
+        <div class="quizz">
+          <img src="./assets/imagens/simpsons.png" />
+        </div>
+        
+    </section>
+    <!-- ========================================================SECTION CONTÉM O CONTAINER DOS DIVS====================================================== -->
+    </div>
+
+    <img
+      src="./assets/imagens/5f237290-ecb3-46c0-bec6-72cab7239355.gif"
+      alt=""
+    />
+    <script src="./assets/js/index.js"></script>
+  </body>
 </html>

@@ -21,7 +21,7 @@
     </header>
     <!-- ========================================================HEADER====================================================== -->
     <div class="container">
-      <!--Container com todo conteudo do site, menos o header, vamos aplicar a classe escondido nela para ir para a tela de responder o quizz-->
+        <!--Container com todo conteudo do site, menos o header, vamos aplicar a classe escondido nela para ir para a tela de responder o quizz-->
       <!-- ================================================CAIXINHA CASO NÃO TENHA CRIADO QUIZZ====================================================== -->
       <div class="criar-quizz">
         <!--AQUI PODEMOS ADICIONAR A CLASSE 'escondido' se a pessoa já criou pelo menos 1 quizz-->
@@ -31,11 +31,9 @@
       <!-- ================================================CAIXINHA CASO NÃO TENHA CRIADO QUIZZ====================================================== -->
       <!--####################################################CAIXINHA CASO TENHA CRIADO QUIZZES##################################################-->
       <div class="seus-quizzes">
-        <div class="titulo-seus-quizzes">
-          <!--AQUI PODEMOS ADICIONAR A CLASSE 'escondido' se a pessoa ainda não criou quizzes-->
+        <div class="titulo-seus-quizzes"><!--AQUI PODEMOS ADICIONAR A CLASSE 'escondido' se a pessoa ainda não criou quizzes-->
           <h2>Seus Quizzes</h2>
-          <ion-icon name="add-circle" onclick="criarQuizz()"></ion-icon
-          ><!--Aqui vai ser o botão para criar um novo quizz-->
+          <ion-icon name="add-circle" onclick="criarQuizz()"></ion-icon><!--Aqui vai ser o botão para criar um novo quizz-->
         </div>
         <div class="todos-meus-quizzes">
           <div class="quizz">
@@ -55,40 +53,7 @@
       <h1>Todos os Quizzes</h1>
 
       <!-- ========================================================SECTION CONTÉM O CONTAINER DOS DIVS====================================================== -->
-      <section class="todos-quizzes">
-        <div class="quizz">
-          <img src="./assets/imagens/simpsons.png" />
-          <div class="texto-quizz">
-            Acerte os personagens corretos dos Simpsons e prove seu amor!
-          </div>
-        </div>
-        <div class="quizz">
-          <img src="./assets/imagens/preguiça.png" />
-          <div class="texto-quizz">O quanto você é de boas?</div>
-        </div>
-        <div class="quizz">
-          <img src="./assets/imagens/simpsons.png" />
-          <div class="texto-quizz">
-            Acerte os personagens corretos dos Simpsons e prove seu amor!
-          </div>
-        </div>
-        <div class="quizz">
-          <img src="./assets/imagens/simpsons.png" />
-          <div class="texto-quizz">
-            Acerte os personagens corretos dos Simpsons e prove seu amor!
-          </div>
-        </div>
-        <div class="quizz">
-          <img src="./assets/imagens/preguiça.png" />
-          <div class="texto-quizz">O quanto você é de boas?</div>
-        </div>
-        <div class="quizz">
-          <img src="./assets/imagens/simpsons.png" />
-          <div class="texto-quizz">
-            Acerte os personagens corretos dos Simpsons e prove seu amor!
-          </div>
-        </div>
-      </section>
+      <section class="todos-quizzes"></section>
       <!-- ========================================================SECTION CONTÉM O CONTAINER DOS DIVS====================================================== -->
     </div>
 
@@ -104,6 +69,7 @@
       nomodule
       src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
     ></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="./assets/js/index.js"></script>
   </body>
 </html>

@@ -3,6 +3,11 @@
 }
 body {
   background-color: #fafafa;
+  font-family: "Roboto";
+}
+
+.escondido{
+    display:none;
 }
 
 .header {
@@ -89,7 +94,34 @@ h1 {
   letter-spacing: 0em;
   text-align: left;
   margin-bottom: 0;
-  color: #000000;
+  color: #000000;  
+}
+h2 {
+    font-family: "Roboto";
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 23px;
+    letter-spacing: 0em;
+    text-align: left;
+    margin-bottom: 0;
+    color: #000000;  
+  }
+  /* ##########################=====Aqui o layout da segunda tela que aparece somente quando o user já criou quizzes=======#################### */
+.seus-quizzes {
+    width:100%;
+}
+.titulo-seus-quizzes {
+    
+    width:100%;
+    display:flex;
+    align-items: center;
+
+}
+.titulo-seus-quizzes ion-icon {
+    font-size: 30px;
+    color: #EC362D;
+    align-items: left;
+
 }
 .todos-quizzes {
   display: flex;
@@ -99,6 +131,9 @@ h1 {
 }
 .todos-quizzes > div {
   flex: 0 1 340px;
+}
+.quizz {
+    position:relative;
 }
 .quizz img {
   max-width: 100%;
@@ -111,4 +146,19 @@ h1 {
     #000000 100%
   );
   border-radius: 5px;
+}
+.texto-quizz {
+font-family: 'Roboto';
+width: 301px;
+font-size: 19px;
+font-weight: 400;
+line-height: 22px;
+letter-spacing: 0em;
+text-align: left;
+color:#ffffff;
+position:absolute;
+bottom: 7px;
+left:18px;
+
+
 }

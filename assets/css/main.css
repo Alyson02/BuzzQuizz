@@ -187,7 +187,6 @@ h2 {
 }
 
 .quizz img {
-  max-width: 100%;
   margin-top: 12px;
   width: 340px;
   height: 200px;
@@ -211,25 +210,23 @@ h2 {
 /* classe pra esconder as coisas e trocar de tela, vou deixando ela mais abaixo no codigo css */
 .escondido {
   display: none;
-<<<<<<< HEAD
-}
-=======
 }
 
-.formulario-inicial {
+.formulario {
   margin-top: 140px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.formulario-inicial form {
+.formulario form {
   background-color: white;
   padding: 20px;
   margin-top: 27px;
+  min-width: 600px;
 }
 
-.formulario-inicial input {
+.formulario input {
   display: block;
   width: 564px;
   height: 46px;
@@ -243,7 +240,8 @@ h2 {
   color: #bababa;
 }
 
-.formulario-inicial h1 {
+.formulario h1,
+.formulario-final h1 {
   text-align: center;
   font-weight: 700;
   font-size: 23px;
@@ -257,7 +255,7 @@ h2 {
   color: #bababa;
 }
 
-.formulario-inicial button {
+.formulario button {
   background: #ec362d;
   width: 368.86px;
   height: 54px;
@@ -267,4 +265,124 @@ h2 {
   color: #fff5f4;
   border-radius: 15px;
   border: none;
+  margin-top: 82px;
+  transition: ease-in-out all .6;
+}
+
+.formulario button:hover {
+  cursor: pointer;
+  background-color: #ec180d;
+}
+
+.formulario legend,
+.formulario label {
+  display: inline-block;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 23px;
+  margin-bottom: 14px;
+  margin-top: 7px;
+}
+
+.formulario input[type="color"] {
+  padding: unset;
+}
+
+.formulario fieldset {
+  margin-top: 24px;
+}
+
+.formulario fieldset:first-child {
+  margin-top: unset;
+}
+
+#respostas-incorretas input:nth-child(2n + 1) {
+  margin-bottom: 20px;
+}
+
+#respostas-incorretas input:last-child {
+  margin: unset;
+}
+
+.form-encolhido {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+}
+
+.form-encolhido svg {
+  width: 26px;
+  height: 26px;
+}
+
+.form-encolhido svg:hover {
+  cursor: pointer;
+}
+
+.form-encolhido legend {
+  margin: unset;
+}
+
+.formulario-final button {
+  margin-top: 45px;
+}
+
+.formulario-final p {
+  margin-top: 19px;
+  color: #818181;
+  font-weight: 400;
+  font-size: 21px;
+  line-height: 25px;
+}
+
+.formulario-final .quizz{
+  width: 500px;
+  height: 266px;
+}
+
+.formulario-final .quizz img{
+  margin-top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.formulario-final h1{
+  margin-bottom: 46px;
+}
+
+@media (max-width: 1100px) {
+
+    .container{
+      margin-top:100px;
+      width:100%;
+      display:flex;
+      justify-content: center;
+      
+    }
+    .criar-quizz{
+      width:90%;
+    }
+    .titulo-seus-quizzes{
+      justify-content: space-between;
+      width:90%;
+    }
+    
+    .seus-quizzes{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .todos-meus-quizzes{
+      justify-content: center;
+    }
+    .todos-quizzes{
+      display: flex;
+      justify-content: center;      
+    }
+    h1{
+      width:90%
+    }
 }

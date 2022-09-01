@@ -2,10 +2,12 @@
 * {
   box-sizing: border-box;
 }
+
 body {
   background-color: #fafafa;
   font-family: "Roboto";
 }
+
 /* Configurações gerais - FIM */
 
 /* CABEÇALHO DO SITE */
@@ -33,6 +35,7 @@ header div {
   letter-spacing: 0em;
   text-align: left;
 }
+
 /* CABEÇALHO DO SITE - FIM */
 
 /* CONTEÚDO DO SITE DAQUI PRA BAIXO */
@@ -44,6 +47,7 @@ header div {
   align-items: center;
   margin-top: 146px;
 }
+
 /* PARTE DO "VOCÊ AINDA NÃO CRIOU NENHUM QUIZZ... */
 .criar-quizz {
   width: 100%;
@@ -57,6 +61,7 @@ header div {
   border: 1px dashed #d5d5d5;
   border-radius: 5px;
 }
+
 .frase {
   width: 250px;
   height: 107px;
@@ -70,6 +75,7 @@ header div {
   align-items: center;
   color: #b9b9b9;
 }
+
 .botao-criar {
   font-family: "Roboto";
   font-size: 21px;
@@ -86,6 +92,7 @@ header div {
   border: 1px dashed #ec362d;
   border-radius: 50px;
 }
+
 /* PARTE DO "VOCÊ AINDA NÃO CRIOU NENHUM QUIZZ... - FIM */
 
 /* H1 REMETE AO "TODOS OS QUIZZES" */
@@ -100,6 +107,7 @@ h1 {
   margin-bottom: 0;
   color: #000000;
 }
+
 /* --FIM-- */
 
 /* H2 REMETE AO "SEUS QUIZZES" */
@@ -113,23 +121,27 @@ h2 {
   margin-bottom: 0;
   color: #000000;
 }
+
 /* --FIM-- */
 /* =====Aqui o layout da segunda tela que aparece somente quando o user já criou quizzes======= */
 .seus-quizzes {
   width: 100%;
   margin-bottom: 48px;
 }
+
 .titulo-seus-quizzes {
   width: 100%;
   display: flex;
   align-items: center;
 }
+
 .titulo-seus-quizzes ion-icon {
   font-size: 30px;
   color: #ec362d;
   align-items: left;
   margin-left: 17px;
 }
+
 .todos-meus-quizzes {
   display: flex;
   flex-wrap: wrap;
@@ -149,6 +161,9 @@ h2 {
   column-gap: 15px;
 }
 
+.todos-quizzes > div {
+  flex: 0 1 340px;
+}
 /* Quizz, dentro dele temos uma imagem e um texto com a classe texto-quizz */
 .quizz {
   position: relative;
@@ -191,7 +206,6 @@ h2 {
   position: absolute;
   bottom: 7px;
   left: 18px;
-  z-index: 2000;
 }
 /* classe pra esconder as coisas e trocar de tela, vou deixando ela mais abaixo no codigo css */
 .escondido {
@@ -335,4 +349,40 @@ h2 {
 
 .formulario-final h1{
   margin-bottom: 46px;
+}
+
+@media (max-width: 1100px) {
+
+    .container{
+      margin-top:100px;
+      width:100%;
+      display:flex;
+      justify-content: center;
+      
+    }
+    .criar-quizz{
+      width:90%;
+    }
+    .titulo-seus-quizzes{
+      justify-content: space-between;
+      width:90%;
+    }
+    
+    .seus-quizzes{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .todos-meus-quizzes{
+      justify-content: center;
+    }
+    .todos-quizzes{
+      display: flex;
+      justify-content: center;      
+    }
+    h1{
+      width:90%
+    }
 }

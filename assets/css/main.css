@@ -21,7 +21,7 @@ header {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  z-index: 2;
+  z-index: 5000;
 }
 
 header div {
@@ -152,19 +152,34 @@ h2 {
 /* Quizz, dentro dele temos uma imagem e um texto com a classe texto-quizz */
 .quizz {
   position: relative;
-  
+  display: inline-block;
+}
+
+.quizz:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: inline-block;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(0, 0, 0, 0.5) 65.1%,
+    #000000 100%
+  );
 }
 
 .quizz img {
   max-width: 100%;
   margin-top: 12px;
   width: 340px;
-  height: 181px;
+  height: 200px;
   object-fit: cover;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 65.1%, #000000 100%);
   border-radius: 5px;
-  
 }
+
 .texto-quizz {
   font-family: "Roboto";
   width: 301px;
@@ -177,8 +192,62 @@ h2 {
   position: absolute;
   bottom: 7px;
   left: 18px;
+  z-index: 2000;
 }
 /* classe pra esconder as coisas e trocar de tela, vou deixando ela mais abaixo no codigo css */
 .escondido {
   display: none;
+}
+
+.formulario-inicial {
+  margin-top: 140px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.formulario-inicial form {
+  background-color: white;
+  padding: 20px;
+  margin-top: 27px;
+}
+
+.formulario-inicial input {
+  display: block;
+  width: 564px;
+  height: 46px;
+  margin-bottom: 9px;
+  border: 1px solid #d1d1d1;
+  border-radius: 5px;
+  padding-left: 24px;
+  font-weight: 400;
+  font-size: 19px;
+  line-height: 22px;
+  color: #bababa;
+}
+
+.formulario-inicial h1 {
+  text-align: center;
+  font-weight: 700;
+  font-size: 23px;
+  line-height: 27px;
+}
+
+::placeholder {
+  font-weight: 400;
+  font-size: 19px;
+  line-height: 22px;
+  color: #bababa;
+}
+
+.formulario-inicial button {
+  background: #ec362d;
+  width: 368.86px;
+  height: 54px;
+  font-weight: 400;
+  font-size: 21px;
+  line-height: 25px;
+  color: #fff5f4;
+  border-radius: 15px;
+  border: none;
 }

@@ -20,7 +20,7 @@
       <div>BuzzQuizz</div>
     </header>
     <!-- ========================================================HEADER====================================================== -->
-    <div class="container">
+    <div class="container escondido">
         <!--Container com todo conteudo do site, menos o header, vamos aplicar a classe escondido nela para ir para a tela de responder o quizz-->
       <!-- ================================================CAIXINHA CASO NÃO TENHA CRIADO QUIZZ====================================================== -->
       <div class="criar-quizz">
@@ -55,6 +55,19 @@
       <!-- ========================================================SECTION CONTÉM O CONTAINER DOS DIVS====================================================== -->
       <section class="todos-quizzes"></section>
       <!-- ========================================================SECTION CONTÉM O CONTAINER DOS DIVS====================================================== -->
+    </div>
+
+    <div class="formulario-inicial">
+        <h1>Comece pelo começo</h1>
+        <form>
+            <fieldset>
+                <input id="titulo" type="text" placeholder="Título do seu quizz">
+                <input id="imagem" type="text" placeholder="URL da imagem do seu quizz">
+                <input id="qtd-perguntas" type="text" placeholder="Quantidade de perguntas do quizz">
+                <input id="qtd-niveis" type="text" placeholder="Quantidade de níveis do quizz">
+            </fieldset>
+        </form>
+        <button>Prosseguir pra criar perguntas</button>
     </div>
 
     <img

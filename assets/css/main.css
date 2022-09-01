@@ -9,7 +9,7 @@ body {
 /* Configurações gerais - FIM */
 
 /* CABEÇALHO DO SITE */
-.header {
+header {
   position: fixed;
   left: 0;
   top: 0;
@@ -24,7 +24,7 @@ body {
   z-index: 2;
 }
 
-.header div {
+header div {
   font-family: "Roboto";
   color: #ffffff;
   font-size: 37px;
@@ -137,8 +137,8 @@ h2 {
   column-gap: 15px;
 }
 .todos-meus-quizzes > div {
-    flex: 0 1 340px;
-  }
+  flex: 0 1 340px;
+}
 /* =====Aqui o layout da segunda tela que aparece somente quando o user já criou quizzes - FIM ======= */
 
 /* Container com todos os quizzes */
@@ -149,24 +149,21 @@ h2 {
   column-gap: 15px;
 }
 
-.todos-quizzes > div {
-  flex: 0 1 340px;
-}
 /* Quizz, dentro dele temos uma imagem e um texto com a classe texto-quizz */
 .quizz {
   position: relative;
+  
 }
+
 .quizz img {
   max-width: 100%;
   margin-top: 12px;
-
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(0, 0, 0, 0.5) 64.58%,
-    #000000 100%
-  );
+  width: 340px;
+  height: 181px;
+  object-fit: cover;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 65.1%, #000000 100%);
   border-radius: 5px;
+  
 }
 .texto-quizz {
   font-family: "Roboto";

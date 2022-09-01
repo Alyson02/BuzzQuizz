@@ -206,6 +206,7 @@ h2 {
   position: absolute;
   bottom: 7px;
   left: 18px;
+  z-index: 4000;
 }
 /* classe pra esconder as coisas e trocar de tela, vou deixando ela mais abaixo no codigo css */
 .escondido {
@@ -336,6 +337,10 @@ h2 {
   line-height: 25px;
 }
 
+.formulario-final p {
+  cursor: pointer;
+}
+
 .formulario-final .quizz{
   width: 500px;
   height: 266px;
@@ -349,6 +354,10 @@ h2 {
 
 .formulario-final h1{
   margin-bottom: 46px;
+}
+
+.formulario-niveis form fieldset > div:last-child{
+  margin-top: 24px;
 }
 
 @media (max-width: 1100px) {

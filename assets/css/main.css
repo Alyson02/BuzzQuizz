@@ -211,9 +211,6 @@ h2 {
 /* classe pra esconder as coisas e trocar de tela, vou deixando ela mais abaixo no codigo css */
 .escondido {
   display: none;
-<<<<<<< HEAD
-}
-=======
 }
 
 .formulario-inicial {
@@ -267,4 +264,40 @@ h2 {
   color: #fff5f4;
   border-radius: 15px;
   border: none;
+}
+
+@media (max-width: 1100px) {
+
+    .container{
+      margin-top:100px;
+      width:100%;
+      display:flex;
+      justify-content: center;
+      
+    }
+    .criar-quizz{
+      width:90%;
+    }
+    .titulo-seus-quizzes{
+      justify-content: space-between;
+      width:90%;
+    }
+    
+    .seus-quizzes{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .todos-meus-quizzes{
+      justify-content: center;
+    }
+    .todos-quizzes{
+      display: flex;
+      justify-content: center;      
+    }
+    h1{
+      width:90%
+    }
 }

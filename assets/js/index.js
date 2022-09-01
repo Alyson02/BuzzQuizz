@@ -5,7 +5,7 @@ carregarQuizzes();
 
 /**
  * Responsavel por carregar todos os quizzes
- * Resolvi usar ela assincrona pra ão precisar criar outra função
+ * Resolvi usar ela assincrona pra não precisar criar outra função
  * Assim, é só colocar um await onde vai ter uma promise
  */
 async function carregarQuizzes() {

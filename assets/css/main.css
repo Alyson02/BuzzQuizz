@@ -2,10 +2,12 @@
 * {
   box-sizing: border-box;
 }
+
 body {
   background-color: #fafafa;
   font-family: "Roboto";
 }
+
 /* Configurações gerais - FIM */
 
 /* CABEÇALHO DO SITE */
@@ -21,7 +23,7 @@ body {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  z-index: 2;
+  z-index: 100;
 }
 
 .header div {
@@ -33,6 +35,7 @@ body {
   letter-spacing: 0em;
   text-align: left;
 }
+
 /* CABEÇALHO DO SITE - FIM */
 
 /* CONTEÚDO DO SITE DAQUI PRA BAIXO */
@@ -44,6 +47,7 @@ body {
   align-items: center;
   margin-top: 146px;
 }
+
 /* PARTE DO "VOCÊ AINDA NÃO CRIOU NENHUM QUIZZ... */
 .criar-quizz {
   width: 100%;
@@ -57,6 +61,7 @@ body {
   border: 1px dashed #d5d5d5;
   border-radius: 5px;
 }
+
 .frase {
   width: 250px;
   height: 107px;
@@ -70,6 +75,7 @@ body {
   align-items: center;
   color: #b9b9b9;
 }
+
 .botao-criar {
   font-family: "Roboto";
   font-size: 21px;
@@ -86,6 +92,7 @@ body {
   border: 1px dashed #ec362d;
   border-radius: 50px;
 }
+
 /* PARTE DO "VOCÊ AINDA NÃO CRIOU NENHUM QUIZZ... - FIM */
 
 /* H1 REMETE AO "TODOS OS QUIZZES" */
@@ -100,6 +107,7 @@ h1 {
   margin-bottom: 0;
   color: #000000;
 }
+
 /* --FIM-- */
 
 /* H2 REMETE AO "SEUS QUIZZES" */
@@ -113,32 +121,38 @@ h2 {
   margin-bottom: 0;
   color: #000000;
 }
+
 /* --FIM-- */
 /* =====Aqui o layout da segunda tela que aparece somente quando o user já criou quizzes======= */
 .seus-quizzes {
   width: 100%;
   margin-bottom: 48px;
 }
+
 .titulo-seus-quizzes {
   width: 100%;
   display: flex;
   align-items: center;
 }
+
 .titulo-seus-quizzes ion-icon {
   font-size: 30px;
   color: #ec362d;
   align-items: left;
   margin-left: 17px;
 }
+
 .todos-meus-quizzes {
   display: flex;
   flex-wrap: wrap;
   justify-content: start;
   column-gap: 15px;
 }
-.todos-meus-quizzes > div {
-    flex: 0 1 340px;
-  }
+
+.todos-meus-quizzes>div {
+  flex: 0 1 340px;
+}
+
 /* =====Aqui o layout da segunda tela que aparece somente quando o user já criou quizzes - FIM ======= */
 
 /* Container com todos os quizzes */
@@ -149,25 +163,26 @@ h2 {
   column-gap: 15px;
 }
 
-.todos-quizzes > div {
+.todos-quizzes>div {
   flex: 0 1 340px;
 }
+
 /* Quizz, dentro dele temos uma imagem e um texto com a classe texto-quizz */
 .quizz {
   position: relative;
 }
+
 .quizz img {
   max-width: 100%;
   margin-top: 12px;
 
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(0, 0, 0, 0.5) 64.58%,
-    #000000 100%
-  );
+  background: linear-gradient(180deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(0, 0, 0, 0.5) 64.58%,
+      #000000 100%);
   border-radius: 5px;
 }
+
 .texto-quizz {
   font-family: "Roboto";
   width: 301px;
@@ -181,6 +196,98 @@ h2 {
   bottom: 7px;
   left: 18px;
 }
+
+/* --------------------------------------------------------
+---------------------------TELA DE RESPOSTA DO QUIZZ-------
+----------------------------------------------------------*/
+
+/*cabecalho quizz*/
+
+.respostas-quizz {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+
+}
+
+.respostas-quizz> .cabecalho-quizz {
+  position: relative;
+  top: 69px;
+}
+
+.cabecalho-quizz>img {
+  width: 100vw;
+  height: 227px;
+  object-fit: cover;
+
+}
+
+.texto-janela-quizz {
+  position: absolute;
+  z-index: 10;
+  text-align: center;
+  color: white;
+  font-weight: 400;
+  font-size: 39px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+}
+
+/*--------------------------------------------------------------------------
+----------------------------Respostas Quizz---------------------------------
+--------------------------------------------------------------------------*/
+
+.quadro-respostas {
+  width: 759px;
+  height: 676px;
+  background-color: white;
+
+  display: flex;
+  flex-direction: column; 
+
+  margin-top: 110px;
+
+  padding: 42px;
+}
+
+
+.cabecalho-quadro-respostas {
+  width: 100%;
+  height: 138px;
+  background-color: #434CA0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: #FFFFFF;
+  font-family: 'Roboto';
+  font-size: 23px;
+  font-weight: 700;
+  line-height: 27px;
+  margin-bottom: 20px;
+}
+.respostas-quizz .repostas {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 0 auto;
+  gap: 25px
+  
+}
+
+.respostas-quizz .repostas img {
+  width: 325px;
+  height: 175px;
+  /* height: 175.2px; */
+}
+
+
+
+
+
+
 /* classe pra esconder as coisas e trocar de tela, vou deixando ela mais abaixo no codigo css */
 .escondido {
   display: none;

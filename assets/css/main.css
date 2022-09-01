@@ -11,7 +11,7 @@ body {
 /* Configurações gerais - FIM */
 
 /* CABEÇALHO DO SITE */
-.header {
+header {
   position: fixed;
   left: 0;
   top: 0;
@@ -23,10 +23,10 @@ body {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  z-index: 100;
+  z-index: 5000;
 }
 
-.header div {
+header div {
   font-family: "Roboto";
   color: #ffffff;
   font-size: 37px;
@@ -148,11 +148,9 @@ h2 {
   justify-content: start;
   column-gap: 15px;
 }
-
-.todos-meus-quizzes>div {
+.todos-meus-quizzes > div {
   flex: 0 1 340px;
 }
-
 /* =====Aqui o layout da segunda tela que aparece somente quando o user já criou quizzes - FIM ======= */
 
 /* Container com todos os quizzes */
@@ -163,23 +161,37 @@ h2 {
   column-gap: 15px;
 }
 
-.todos-quizzes>div {
+.todos-quizzes > div {
   flex: 0 1 340px;
 }
-
 /* Quizz, dentro dele temos uma imagem e um texto com a classe texto-quizz */
 .quizz {
   position: relative;
+  display: inline-block;
+}
+
+.quizz:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: inline-block;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(0, 0, 0, 0.5) 65.1%,
+    #000000 100%
+  );
 }
 
 .quizz img {
   max-width: 100%;
   margin-top: 12px;
-
-  background: linear-gradient(180deg,
-      rgba(255, 255, 255, 0) 0%,
-      rgba(0, 0, 0, 0.5) 64.58%,
-      #000000 100%);
+  width: 340px;
+  height: 200px;
+  object-fit: cover;
   border-radius: 5px;
 }
 
@@ -196,99 +208,63 @@ h2 {
   bottom: 7px;
   left: 18px;
 }
-
-/* --------------------------------------------------------
----------------------------TELA DE RESPOSTA DO QUIZZ-------
-----------------------------------------------------------*/
-
-/*cabecalho quizz*/
-
-.respostas-quizz {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 0 auto;
-
-}
-
-.respostas-quizz> .cabecalho-quizz {
-  position: relative;
-  top: 69px;
-}
-
-.cabecalho-quizz>img {
-  width: 100vw;
-  height: 227px;
-  object-fit: cover;
-
-}
-
-.texto-janela-quizz {
-  position: absolute;
-  z-index: 10;
-  text-align: center;
-  color: white;
-  font-weight: 400;
-  font-size: 39px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-
-}
-
-/*--------------------------------------------------------------------------
-----------------------------Respostas Quizz---------------------------------
---------------------------------------------------------------------------*/
-
-.quadro-respostas {
-  width: 759px;
-  height: 676px;
-  background-color: white;
-
-  display: flex;
-  flex-direction: column; 
-
-  margin-top: 110px;
-
-  padding: 42px;
-}
-
-
-.cabecalho-quadro-respostas {
-  width: 100%;
-  height: 138px;
-  background-color: #434CA0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  color: #FFFFFF;
-  font-family: 'Roboto';
-  font-size: 23px;
-  font-weight: 700;
-  line-height: 27px;
-  margin-bottom: 20px;
-}
-.respostas-quizz .repostas {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  margin: 0 auto;
-  gap: 25px
-  
-}
-
-.respostas-quizz .repostas img {
-  width: 325px;
-  height: 175px;
-  /* height: 175.2px; */
-}
-
-
-
-
-
-
 /* classe pra esconder as coisas e trocar de tela, vou deixando ela mais abaixo no codigo css */
 .escondido {
   display: none;
+<<<<<<< HEAD
+}
+=======
+}
+
+.formulario-inicial {
+  margin-top: 140px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.formulario-inicial form {
+  background-color: white;
+  padding: 20px;
+  margin-top: 27px;
+}
+
+.formulario-inicial input {
+  display: block;
+  width: 564px;
+  height: 46px;
+  margin-bottom: 9px;
+  border: 1px solid #d1d1d1;
+  border-radius: 5px;
+  padding-left: 24px;
+  font-weight: 400;
+  font-size: 19px;
+  line-height: 22px;
+  color: #bababa;
+}
+
+.formulario-inicial h1 {
+  text-align: center;
+  font-weight: 700;
+  font-size: 23px;
+  line-height: 27px;
+}
+
+::placeholder {
+  font-weight: 400;
+  font-size: 19px;
+  line-height: 22px;
+  color: #bababa;
+}
+
+.formulario-inicial button {
+  background: #ec362d;
+  width: 368.86px;
+  height: 54px;
+  font-weight: 400;
+  font-size: 21px;
+  line-height: 25px;
+  color: #fff5f4;
+  border-radius: 15px;
+  border: none;
 }

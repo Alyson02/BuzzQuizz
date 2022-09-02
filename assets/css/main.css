@@ -527,6 +527,42 @@ h2 {
   h1 {
     width: 90%
   }
+  .cabecalho-quizz::after{
+    height: 142px;
+  }
+  .cabecalho-quizz>img {
+    height: 142px;
+  }
+  .texto-janela-quizz{
+    font-size: 19px;
+    line-height: 22px;
+    width:82.5%
+  }
+  .quadro-respostas{
+    width:100%;
+    padding: 18px;
+    margin-top: 88px;
+  }
+
+  .alternativa .legenda {
+    font-size: 13px;
+    line-height: 15px;
+  }
+  .respostas-quizz .repostas {
+    gap:12px;
+  }
+  .respostas-quizz .repostas img {
+    width: 163px;
+    height: 113px;
+    object-fit: cover;
+  }
+ 
+  .cabecalho-quadro-respostas{
+    width:100%;
+    text-align: center;
+    font-size: 19px;
+    line-height: 22px;
+  }
 }
 
 .escondido {

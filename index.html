@@ -20,7 +20,7 @@
       <div>BuzzQuizz</div>
     </header>
     <!-- ========================================================HEADER====================================================== -->
-    <div class="container">
+    <div class="container ">
       <!--Container com todo conteudo do site, menos o header, vamos aplicar a classe escondido nela para ir para a tela de responder o quizz-->
       <!-- ================================================CAIXINHA CASO NÃO TENHA CRIADO QUIZZ====================================================== -->
       <div class="criar-quizz">
@@ -70,21 +70,29 @@
         </div>
 
         <div class="repostas">
-          <div class="alternativa">
-            <img src="./assets/imagens/gatineo.png" alt="" />
-            <div>Gatíneo</div>
+          <div class="alternativa" onclick="selecionarResposta(this)">
+            <div>
+              <img src="./assets/imagens/gatineo.png" alt="">
+            </div>
+            <div class="legenda">Gatíneo</div>
           </div>
-          <div class="alternativa">
-            <img src="./assets/imagens/gatineo.png" alt="" />
-            <div>Gatíneo</div>
+          <div class="alternativa" onclick="selecionarResposta(this)">
+            <div>
+              <img src="./assets/imagens/ratata.png" alt="">
+            </div>
+            <div class="legenda">Ratata</div>
           </div>
-          <div class="alternativa">
-            <img src="./assets/imagens/gatineo.png" alt="" />
-            <div>Gatíneo</div>
+          <div class="alternativa" onclick="selecionarResposta(this)">
+            <div>
+              <img src="./assets/imagens/sapo-gordo.png" alt="">
+            </div>
+            <div class="legenda">Sapo Gordo</div>
           </div>
-          <div class="alternativa">
-            <img src="./assets/imagens/gatineo.png" alt="" />
-            <div>Gatíneo</div>
+          <div class="alternativa" onclick="selecionarResposta(this)">
+            <div>
+              <img src="./assets/imagens/mustela-putorius.png" alt="">
+            </div>
+            <div class="legenda">Mustela putorius (o Furão)</div>
           </div>
         </div>
       </div>
@@ -452,7 +460,7 @@
       <p>Voltar pra home</p>
     </div>
 
-    <img
+    <img class="escondido"
       src="./assets/imagens/5f237290-ecb3-46c0-bec6-72cab7239355.gif"
       alt=""
     />
@@ -468,5 +476,6 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="./assets/js/index.js"></script>
     <script src="./assets/js/criarQuizz.js"></script>
+    <script src="./assets/js/pergutas.js"></script>
   </body>
 </html>

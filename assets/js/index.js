@@ -33,3 +33,6 @@ async function carregarQuizzes() {
  */
 async function carregarQuiz(el) {}
 
+function reload(){
+  window.location.reload();
+}

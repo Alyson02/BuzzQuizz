@@ -342,6 +342,10 @@ h2 {
   line-height: 23px;
 }
 
+/*--------------------------------------------------------------------------
+----------------------------CSS DOS FORMULARIOS-----------------------------
+--------------------------------------------------------------------------*/
+
 .formulario {
   margin-top: 140px;
   display: flex;
@@ -486,8 +490,16 @@ h2 {
 }
 
 .formulario-niveis form fieldset > div:last-child {
-  margin-top: 24px;
+  margin-top: 14px;
 }
+
+.formulario-perguntas form > div:last-child {
+  margin-top: 14px;
+}
+
+/*--------------------------------------------------------------------------
+----------------------------FIM DO CSS DOS FORMULARIOS-----------------------------
+--------------------------------------------------------------------------*/
 
 /* classe pra esconder as coisas e trocar de tela, vou deixando ela mais abaixo no codigo css */
 .escondido {

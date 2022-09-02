@@ -148,9 +148,11 @@ h2 {
   justify-content: start;
   column-gap: 15px;
 }
-.todos-meus-quizzes > div {
+
+.todos-meus-quizzes>div {
   flex: 0 1 340px;
 }
+
 /* =====Aqui o layout da segunda tela que aparece somente quando o user já criou quizzes - FIM ======= */
 
 /* Container com todos os quizzes */
@@ -161,9 +163,10 @@ h2 {
   column-gap: 15px;
 }
 
-.todos-quizzes > div {
+.todos-quizzes>div {
   flex: 0 1 340px;
 }
+
 /* Quizz, dentro dele temos uma imagem e um texto com a classe texto-quizz */
 .quizz {
   position: relative;
@@ -178,12 +181,10 @@ h2 {
   width: 100%;
   height: 100%;
   display: inline-block;
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(0, 0, 0, 0.5) 65.1%,
-    #000000 100%
-  );
+  background: linear-gradient(180deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(0, 0, 0, 0.5) 65.1%,
+      #000000 100%);
 }
 
 .quizz img {
@@ -208,6 +209,59 @@ h2 {
   left: 18px;
 }
 
+/* --------------------------------------------------------
+---------------------------TELA DE RESPOSTA DO QUIZZ-------
+----------------------------------------------------------*/
+
+/*cabecalho quizz*/
+
+.respostas-quizz {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+
+}
+
+.cabecalho-quizz{
+  position: relative;
+  display: inline-block;
+}
+
+.cabecalho-quizz::after{
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: inline-block;
+  background: rgba(0, 0, 0, 0.6);
+}
+.respostas-quizz>.cabecalho-quizz {
+  position: relative;
+  top: 69px;
+}
+
+.cabecalho-quizz>img {
+  width: 100vw;
+  height: 227px;
+  object-fit: cover;
+
+}
+
+.texto-janela-quizz {
+  position: absolute;
+  z-index: 10;
+  text-align: center;
+  color: white;
+  font-weight: 400;
+  font-size: 39px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 /*--------------------------------------------------------------------------
 ----------------------------Respostas Quizz---------------------------------
 --------------------------------------------------------------------------*/
@@ -218,11 +272,13 @@ h2 {
   background-color: white;
 
   display: flex;
-  flex-direction: column; 
+  flex-direction: column;
 
   margin-top: 110px;
 
   padding: 42px;
+
+  gap: 0;
 }
 
 
@@ -241,12 +297,12 @@ h2 {
   line-height: 27px;
   margin-bottom: 20px;
 }
+
 .respostas-quizz .repostas {
   display: grid;
   grid-template-columns: 1fr 1fr;
   margin: 0 auto;
   gap: 25px
-
 }
 
 .respostas-quizz .repostas img {
@@ -255,10 +311,35 @@ h2 {
   /* height: 175.2px; */
 }
 
-/* classe pra esconder as coisas e trocar de tela, vou deixando ela mais abaixo no codigo css */
-.escondido {
-  display: none;
+
+.alternativa .esbranquicado{
+  position: relative;
+  display: inline-block;
 }
+
+.alternativa .esbranquicado::after{
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.6);
+}
+
+/*--------------------------------------------------------------------------
+----------------------------Fim Respostas Quizz-----------------------------
+--------------------------------------------------------------------------*/
+
+.alternativa .legenda {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 23px;
+}
+
 
 .formulario {
   margin-top: 140px;
@@ -384,53 +465,65 @@ h2 {
   line-height: 25px;
 }
 
-.formulario-final .quizz{
+.formulario-final .quizz {
   width: 500px;
   height: 266px;
 }
 
-.formulario-final .quizz img{
+.formulario-final .quizz img {
   margin-top: 0;
   width: 100%;
   height: 100%;
 }
 
-.formulario-final h1{
+.formulario-final h1 {
   margin-bottom: 46px;
 }
 
+/* classe pra esconder as coisas e trocar de tela, vou deixando ela mais abaixo no codigo css */
+
+
+
 @media (max-width: 1100px) {
 
-    .container{
-      margin-top:100px;
-      width:100%;
-      display:flex;
-      justify-content: center;
-      
-    }
-    .criar-quizz{
-      width:90%;
-    }
-    .titulo-seus-quizzes{
-      justify-content: space-between;
-      width:90%;
-    }
-    
-    .seus-quizzes{
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
+  .container {
+    margin-top: 100px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
 
-    .todos-meus-quizzes{
-      justify-content: center;
-    }
-    .todos-quizzes{
-      display: flex;
-      justify-content: center;      
-    }
-    h1{
-      width:90%
-    }
+  }
+
+  .criar-quizz {
+    width: 90%;
+  }
+
+  .titulo-seus-quizzes {
+    justify-content: space-between;
+    width: 90%;
+  }
+
+  .seus-quizzes {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .todos-meus-quizzes {
+    justify-content: center;
+  }
+
+  .todos-quizzes {
+    display: flex;
+    justify-content: center;
+  }
+
+  h1 {
+    width: 90%
+  }
+}
+
+.escondido {
+  display: none;
 }

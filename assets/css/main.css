@@ -91,6 +91,7 @@ header div {
   color: #ec362d;
   border: 1px dashed #ec362d;
   border-radius: 50px;
+  cursor: pointer;
 }
 
 /* PARTE DO "VOCÊ AINDA NÃO CRIOU NENHUM QUIZZ... - FIM */
@@ -256,11 +257,6 @@ h2 {
   /* height: 175.2px; */
 }
 
-/* classe pra esconder as coisas e trocar de tela, vou deixando ela mais abaixo no codigo css */
-.escondido {
-  display: none;
-}
-
 .formulario {
   margin-top: 140px;
   display: flex;
@@ -407,6 +403,12 @@ h2 {
 .formulario-niveis form fieldset > div:last-child{
   margin-top: 24px;
 }
+
+/* classe pra esconder as coisas e trocar de tela, vou deixando ela mais abaixo no codigo css */
+.escondido {
+  display: none;
+}
+
 
 @media (max-width: 1100px) {
 

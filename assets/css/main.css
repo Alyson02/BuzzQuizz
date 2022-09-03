@@ -272,7 +272,7 @@ h2 {
 
 .quadro-respostas {
   width: 759px;
-  height: 676px;
+  height: auto;
   background-color: white;
 
   display: flex;

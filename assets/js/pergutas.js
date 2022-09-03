@@ -46,18 +46,7 @@ function distrubuirAlternativas() {
             </div>
             <div class="legenda">${alternativas[1].text}</div>
         </div>
-        <div class="alternativa" onclick="selecionarResposta(this)">
-            <div>
-                <img src="${alternativas[2].image}">
-            </div>
-            <div class="legenda">${alternativas[2].text}</div>
-        </div>
-        <div class="alternativa" onclick="selecionarResposta(this)">
-            <div>
-                <img src="${alternativas[3].image}">
-            </div>
-            <div class="legenda">${alternativas[3].text}</div>
-        </div>
+        
        
     </div>
     `
@@ -92,8 +81,9 @@ function montarQuiz(quizzArray) {
         level: itensQuizz.levels,
         questoes: itensQuizz.questions
         //     alternativasQuizz: itensQuizz.questions
+        
     }
-
+    console.log(itensQuizz);
     //Construção do cabeçalho com imagem e texto
 
     const textoCabecalho = document.querySelector('.cabecalho-quizz .texto-janela-quizz')

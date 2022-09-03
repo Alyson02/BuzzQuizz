@@ -30,7 +30,7 @@ async function carregarQuizzes() {
 }
 
 /**
- * Responsavel por trocar de tela entre todos os quizzes e o quiz em especifico 
+ * Responsavel por trocar de tela entre todos os quizzes e o quiz em especifico
  */
 async function carregarQuiz(el){
 

@@ -1,10 +1,30 @@
 
-let idQuizz = 1;
+let idQuizz= 1;
+console.log(idQuizz);
 let alternativas = [];
 let estruturaQuizz;
 let perguntas;
-const promessa = axios.get(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/${idQuizz}`);
+
+/**
+ * Responsavel por trocar de tela entre todos os quizzes e o quiz em especifico
+ */
+
+function carregarQuiz(el){
+  
+    let tela1 = document.querySelector('.container');
+    let abriuQuizz = document.querySelector('.respostas-quizz');
+    tela1.classList.add('escondido');
+    abriuQuizz.classList.remove('escondido');
+    abriuQuizz.scrollIntoView();
+  idQuizz = el.id;
+
+  const promessa = axios.get(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/${idQuizz}`);
 promessa.then(montarQuiz)
+promessa.catch((e) => console.log(e));
+  
+  }
+
+
 
 // Embaralhar alternativas
 function comparador() {
@@ -118,3 +138,4 @@ function selecionarResposta(resposta) {
 
     }
 }
+

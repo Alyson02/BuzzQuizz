@@ -29,26 +29,9 @@ async function carregarQuizzes() {
   
 }
 
-/**
- * Responsavel por trocar de tela entre todos os quizzes e o quiz em especifico
- */
-let idDoQuizz;
-async function carregarQuiz(el){
 
-  let quiz = [];
-  await axios
-    .get(`${urlBase}/quizzes/${el.id}`)
-    .then((r) => (quiz = r.data))
-    .catch((e) => console.log(e));
-  console.log(quiz);
 
-  let tela1 = document.querySelector('.container');
-  let abriuQuizz = document.querySelector('.respostas-quizz');
-  tela1.classList.add('escondido');
-  abriuQuizz.classList.remove('escondido');
-  abriuQuizz.scrollIntoView();
-idDoQuizz = el.id;
-}
+
 
 function reload(){
   window.location.reload();

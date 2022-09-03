@@ -213,6 +213,10 @@ h2 {
   bottom: 7px;
   left: 18px;
   z-index: 4000;
+  word-wrap: break-word;
+  flex-wrap: wrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* --------------------------------------------------------

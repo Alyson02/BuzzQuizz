@@ -276,7 +276,7 @@ h2 {
 
 .quadro-respostas {
   width: 759px;
-  height: 676px;
+  height: auto;
   background-color: white;
 
   display: flex;
@@ -573,7 +573,7 @@ h2 {
   }
   .respostas-quizz .repostas img {
     width: 100%;
-    height: auto;
+    height: 113px;
     object-fit: cover;
   }
 

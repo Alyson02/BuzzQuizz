@@ -32,6 +32,7 @@ async function carregarQuizzes() {
 /**
  * Responsavel por trocar de tela entre todos os quizzes e o quiz em especifico
  */
+let idDoQuizz;
 async function carregarQuiz(el){
 
   let quiz = [];
@@ -46,7 +47,7 @@ async function carregarQuiz(el){
   tela1.classList.add('escondido');
   abriuQuizz.classList.remove('escondido');
   abriuQuizz.scrollIntoView();
-
+idDoQuizz = el.id;
 }
 
 function reload(){

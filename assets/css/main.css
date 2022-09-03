@@ -254,8 +254,9 @@ h2 {
 
 .cabecalho-quizz > img {
   width: 100vw;
-  height: 227px;
+  height: 400px;
   object-fit: cover;
+  object-position: 0px -300px;
 }
 
 .texto-janela-quizz {
@@ -509,7 +510,6 @@ h2 {
 .escondido {
   display: none;
 }
-
 
 @media (max-width: 1100px) {
   .container {

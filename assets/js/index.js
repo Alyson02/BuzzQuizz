@@ -45,7 +45,7 @@ async function carregarQuiz(el){
   let abriuQuizz = document.querySelector('.respostas-quizz');
   tela1.classList.add('escondido');
   abriuQuizz.classList.remove('escondido');
-abriuQuizz.scrollIntoView();
+  abriuQuizz.scrollIntoView();
 
 }
 

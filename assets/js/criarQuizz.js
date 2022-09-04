@@ -515,6 +515,11 @@ async function finalizarForm() {
   //Passando o id do quizz para o array que vai entrar no local storage
   arrayLocalStorage.push(idQuizz);
 
+  //Transformar array de id em string
+  stringLocalStorage = JSON.stringify(arrayLocalStorage);
+  //Passar a string pro localStorage para não perdermos ela
+  localStorage.setItem("id", stringLocalStorage);
+
   const formFinal = document.querySelector(".formulario-final");
   formFinal.classList.remove("escondido");
 
@@ -573,10 +578,6 @@ function verificarResposta(inputTexto, inputImagem) {
   }
   return false;
 }
-//Transformar array de id em string
-stringLocalStorage = JSON.stringify(arrayLocalStorage);
-//Passar a string pro localStorage para não perdermos ela
-localStorage.setItem("id", stringLocalStorage);
 //Pegar string do localStorage
 getStringLS = localStorage.getItem("id");
 //Transformar string do localStorage em array

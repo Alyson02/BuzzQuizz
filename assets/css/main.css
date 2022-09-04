@@ -269,6 +269,10 @@ h2 {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  word-wrap: break-word;
+  flex-wrap: wrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /*--------------------------------------------------------------------------
@@ -304,6 +308,10 @@ h2 {
   font-weight: 700;
   line-height: 27px;
   margin-bottom: 20px;
+  word-wrap: break-word;
+  flex-wrap: wrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .respostas-quizz .repostas {
@@ -345,6 +353,10 @@ h2 {
   font-weight: 700;
   font-size: 20px;
   line-height: 23px;
+  word-wrap: break-word;
+  flex-wrap: wrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 
@@ -557,9 +569,12 @@ h2 {
   }
   .cabecalho-quizz::after {
     height: 142px;
+    
   }
   .cabecalho-quizz > img {
     height: 142px;
+    object-position: 0 0;
+    
   }
   .texto-janela-quizz {
     font-size: 19px;

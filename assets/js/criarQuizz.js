@@ -611,12 +611,21 @@ function verificarSeEhMeu(elemento) {
   }
 }
 
-function carregarMeusQuizzes() {
-  let promessa1 = axios.get(`${urlBase}/quizzes`);
-  promessa1.then((q) => (tdsQuizzes = q.data));
-  promessa1.catch(console.log("deu ruim"));
+async function carregarMeusQuizzes() {
+  await axios
+    .get(`${urlBase}/quizzes`)
+    .then((r) => (tdsQuizzes = r.data))
+    .catch((e) => console.log(e));
 
-  cMeusQuizzes = tdsQuizzes.filter(verificarSeEhMeu);
+  cMeusQuizzes = tdsQuizzes.filter((quizz) => {
+    if (getArrayLS.includes(quizz.id)) {
+      console.log("Meu quizz", quizz);
+      return true;
+    } else {
+      console.log("Não é meu quizz", quizz);
+      return false;
+    }
+  });
 }
 
 carregarMeusQuizzes();

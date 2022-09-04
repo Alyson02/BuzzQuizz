@@ -11,9 +11,9 @@ let numPerguntas = 0;
 const arrayLocalStorage = [];
 let stringLocalStorage;
 let getStringLS;
-const getArrayLS = [];
-const cMeusQuizzes = [];
-const tdsQuizzes = [];
+let getArrayLS = [];
+let cMeusQuizzes = [];
+let tdsQuizzes = [];
 
 /**
  * Responsável por mudar para tela de criação de quizz e criação do quizz
@@ -584,7 +584,6 @@ getStringLS = localStorage.getItem("id");
 getArrayLS = JSON.parse(getStringLS);
 //mostrar os quizzes com id igual
 
-
 //Ao invés de fazer pela length, posso só colocar pra mostrar os
 //Quizzes que tiverem esse id
 
@@ -596,9 +595,7 @@ if (getArrayLS.length != 0) {
   //Mostrar Seus quizzes
   divCriarQuizz.classList.add("escondido");
   divSeusQuizzes.classList.remove("escondido");
-//Arranjar alguma forma de mostrar o quizz que criei pelos IDS deles
-
-
+  //Arranjar alguma forma de mostrar o quizz que criei pelos IDS deles
 } else {
   divCriarQuizz.classList.remove("escondido");
   divSeusQuizzes.classList.add("escondido");
@@ -630,6 +627,16 @@ async function carregarMeusQuizzes() {
       return false;
     }
   });
+
+  const containerMeusQuizzes = document.querySelector(".todos-meus-quizzes");
+
+  cMeusQuizzes.forEach((quiz) => {
+    containerMeusQuizzes.innerHTML += `
+    <div class="quizz" onclick="carregarQuiz(this)" id="${quiz.id}">
+        <img src="${quiz.image}" />
+        <div class="texto-quizz">${quiz.title}</div>
+    </div>
+    `;
+  });
 }
-buscarHistorico();
 carregarMeusQuizzes();

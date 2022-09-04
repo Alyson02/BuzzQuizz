@@ -8,7 +8,7 @@ const quizz = {
 let numLeveis = 0;
 let numPerguntas = 0;
 
-let arrayLocalStorage = [];
+const arrayLocalStorage = [];
 let stringLocalStorage;
 let getStringLS;
 let getArrayLS = [];
@@ -515,6 +515,11 @@ async function finalizarForm() {
   //Passando o id do quizz para o array que vai entrar no local storage
   arrayLocalStorage.push(idQuizz);
 
+  //Transformar array de id em string
+  stringLocalStorage = JSON.stringify(arrayLocalStorage);
+  //Passar a string pro localStorage para não perdermos ela
+  localStorage.setItem("id", stringLocalStorage);
+
   const formFinal = document.querySelector(".formulario-final");
   formFinal.classList.remove("escondido");
 
@@ -573,10 +578,6 @@ function verificarResposta(inputTexto, inputImagem) {
   }
   return false;
 }
-//Transformar array de id em string
-stringLocalStorage = JSON.stringify(arrayLocalStorage);
-//Passar a string pro localStorage para não perdermos ela
-localStorage.setItem("id", stringLocalStorage);
 //Pegar string do localStorage
 getStringLS = localStorage.getItem("id");
 //Transformar string do localStorage em array
@@ -594,6 +595,7 @@ if (getArrayLS.length != 0) {
   //Mostrar Seus quizzes
   divCriarQuizz.classList.add("escondido");
   divSeusQuizzes.classList.remove("escondido");
+  //Arranjar alguma forma de mostrar o quizz que criei pelos IDS deles
 } else {
   divCriarQuizz.classList.remove("escondido");
   divSeusQuizzes.classList.add("escondido");
@@ -610,12 +612,31 @@ function verificarSeEhMeu(elemento) {
   }
 }
 
-function carregarMeusQuizzes() {
-  let promessa1 = axios.get(`${urlBase}/quizzes`);
-  promessa1.then((q) => (tdsQuizzes = q.data));
-  promessa1.catch(console.log("deu ruim"));
+async function carregarMeusQuizzes() {
+  await axios
+    .get(`${urlBase}/quizzes`)
+    .then((r) => (tdsQuizzes = r.data))
+    .catch((e) => console.log(e));
 
-  cMeusQuizzes = tdsQuizzes.filter(verificarSeEhMeu);
+  cMeusQuizzes = tdsQuizzes.filter((quizz) => {
+    if (getArrayLS.includes(quizz.id)) {
+      console.log("Meu quizz", quizz);
+      return true;
+    } else {
+      console.log("Não é meu quizz", quizz);
+      return false;
+    }
+  });
+
+  const containerMeusQuizzes = document.querySelector(".todos-meus-quizzes");
+
+  cMeusQuizzes.forEach((quiz) => {
+    containerMeusQuizzes.innerHTML += `
+    <div class="quizz" onclick="carregarQuiz(this)" id="${quiz.id}">
+        <img src="${quiz.image}" />
+        <div class="texto-quizz">${quiz.title}</div>
+    </div>
+    `;
+  });
 }
-
 carregarMeusQuizzes();

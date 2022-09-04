@@ -27,13 +27,9 @@ async function carregarQuizzes() {
     </div>
     `;
   });
-  console.log(quizzes[0])
+  console.log(quizzes[0]);
 }
 
-
-
-
-
-function reload(){
+function reload() {
   window.location.reload();
 }

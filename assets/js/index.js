@@ -1,6 +1,6 @@
 // Variaveis globais
 const urlBase = "https://mock-api.driven.com.br/api/v4/buzzquizz";
-
+let tam;
 carregarQuizzes();
 
 /**
@@ -14,6 +14,7 @@ async function carregarQuizzes() {
   await axios
     .get(`${urlBase}/quizzes`)
     .then((r) => (quizzes = r.data))
+    .then((s) => (tam = s.length))
     .catch((e) => console.log(e));
 
   const section = document.querySelector(".todos-quizzes");

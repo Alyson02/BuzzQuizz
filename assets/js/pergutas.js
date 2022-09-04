@@ -16,7 +16,7 @@ function carregarQuiz(el){
     tela1.classList.add('escondido');
     abriuQuizz.classList.remove('escondido');
     abriuQuizz.scrollIntoView();
-  idQuizz = el.id;
+    // idQuizz = el.id;
 
   const promessa = axios.get(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/${idQuizz}`);
 promessa.then(montarQuiz)
@@ -35,7 +35,7 @@ function renderizarAlternativas(){
     let a ='';
     for(let i =0; i<alternativas.length; i++){   
         a += `
-            <div class="alternativa" onclick="selecionarResposta(this)">
+            <div class="alternativa ${alternativas[i].isCorrectAnswer}" onclick="selecionarResposta(this)">
                 <div>
                     <img src="${alternativas[i].image}">
                 </div>
@@ -103,18 +103,32 @@ function montarQuiz(quizzArray) {
 function selecionarResposta(resposta) {
 
     resposta.classList.add('item-selecionado'); //adiciona a classe no item selecionado como resposta
+    console.log(resposta)  
+    
+    if(resposta.classList.contains('true')){
+        resposta.classList.add('correto')
+    }else{
+        resposta.classList.add('errado')
+    }
+    
     let testeResposta = ''
     const divRespostas = resposta.parentNode; //Seleciona toda a div que pertence a resposta
 
+
+
     //percorrore por todos os filhos da divResposta
-    for (let i = 0; i < 4; i++) {
+    for (let i = 0; i < alternativas.length; i++) {
         testeResposta = divRespostas.children[i]; //recebe o filho da iteração
-        testeResposta.onclick = "a"
+        console.log('iteração:' + i)
+        console.log(testeResposta)
+        testeResposta.setAttribute("onclick", " ")
+        // testeResposta.onclick = "a"
 
         //Se o filho não tiver a classe ele item-selecionado ele recebe a classe esbranquicado
         if (!testeResposta.classList.contains('item-selecionado')) {
             testeResposta.children[0].classList.add('esbranquicado');
         }
+
 
     }
 }

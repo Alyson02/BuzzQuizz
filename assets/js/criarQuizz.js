@@ -434,11 +434,11 @@ function criarLevels() {
   btnCriaLevels.addEventListener("click", (e) => {
     e.preventDefault();
     const response = adicionarNiveis(Array.from(niveis.children));
-    if(response){
-      alert("Dados inválidos")
-    }else{
-      formNiveis.classList.add("escondido")
-      finalizarForm()
+    if (response) {
+      alert("Dados inválidos");
+    } else {
+      formNiveis.classList.add("escondido");
+      finalizarForm();
     }
   });
 }
@@ -485,19 +485,23 @@ function adicionarNiveis(niveis) {
     let tem0 = levels.some((level) => level.minValue == 0);
     if (tem0) {
       quizz.levels = levels;
-      return error
-    }else{
-      error = true
+      return error;
+    } else {
+      error = true;
     }
   }
 
-  return error
+  return error;
 }
 
 async function finalizarForm() {
+  let idQuizz;
   await axios
     .post("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes", quizz)
-    .then((r) => console.log(r))
+    .then((r) => {
+      idQuizz = r.data.id;
+      console.log(r.data, "só pra grantir")
+    })
     .catch((e) => console.log(e));
 
   const formFinal = document.querySelector(".formulario-final");
@@ -510,8 +514,22 @@ async function finalizarForm() {
       <div class="texto-quizz">${quizz.title}</div>
     </div>
     <p onclick="reload()">Voltar pra home</p>
-    <button>Acessar Quizz</button>
+    <button onclick="acessarQuiz(${idQuizz})">Acessar Quizz</button>
   `;
+}
+
+function acessarQuiz(idQuizz) {
+  let frmFinal = document.querySelector(".formulario-final");
+  let abriuQuizz = document.querySelector(".respostas-quizz");
+  frmFinal.classList.add("escondido");
+  abriuQuizz.classList.remove("escondido");
+  abriuQuizz.scrollIntoView();
+
+  const promessa = axios.get(
+    `https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/${idQuizz}`
+  );
+  promessa.then(montarQuiz);
+  promessa.catch((e) => console.log(e));
 }
 
 function abrirPergunta(idPergunta, btn) {

@@ -16,12 +16,11 @@ function carregarQuiz(el){
     tela1.classList.add('escondido');
     abriuQuizz.classList.remove('escondido');
     abriuQuizz.scrollIntoView();
-    idQuizz = el.id;
-    // idQuizz = 1;
+  idQuizz = el.id;
 
-    const promessa = axios.get(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/${idQuizz}`);
-    promessa.then(montarQuiz)
-    promessa.catch((e) => console.log(e));
+  const promessa = axios.get(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/${idQuizz}`);
+promessa.then(montarQuiz)
+promessa.catch((e) => console.log(e));
   
   }
 

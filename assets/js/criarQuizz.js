@@ -11,9 +11,9 @@ let numPerguntas = 0;
 const arrayLocalStorage = [];
 let stringLocalStorage;
 let getStringLS;
-const getArrayLS = [];
-const cMeusQuizzes = [];
-const tdsQuizzes = [];
+let getArrayLS = [];
+let cMeusQuizzes = [];
+let tdsQuizzes = [];
 
 /**
  * Responsável por mudar para tela de criação de quizz e criação do quizz
@@ -630,6 +630,17 @@ async function carregarMeusQuizzes() {
       return false;
     }
   });
+
+  const section1 = document.querySelector(".todos-meus-quizzes");
+
+  cMeusQuizzes.forEach((quiz) => {
+    section1.innerHTML += `
+    <div class="quizz" onclick="carregarQuiz(this)" id="${quiz.id}">
+        <img src="${quiz.image}" />
+        <div class="texto-quizz">${quiz.title}</div>
+    </div>
+    `;
+  });
 }
-buscarHistorico();
+
 carregarMeusQuizzes();

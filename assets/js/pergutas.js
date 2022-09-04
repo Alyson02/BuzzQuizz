@@ -1,4 +1,3 @@
-
 // let idQuizz= 1;
 // console.log(idQuizz);
 let alternativas = [];
@@ -57,16 +56,16 @@ function montarQuadro(ordemPergunta) {
 
   alternativas.sort(comparador); //embaralha as alternativas
 
-  const quadrosRespostas = document.querySelector(".respostas-quizz");
-  quadrosRespostas.innerHTML += `
-        <div class="quadro-respostas">
-            <div class="cabecalho-quadro-respostas" style="background-color: ${corPergunta}">
-                ${tituloPergunta}
+  const quadrosRespostas = document.querySelector(".questoes");
+  quadrosRespostas.innerHTML += /*html*/ `
+            <div class="quadro-respostas">
+                <div class="cabecalho-quadro-respostas" style="background-color: ${corPergunta}">
+                    ${tituloPergunta}
+                </div>
+                <div class="repostas">
+                    ${renderizarAlternativas()}
+                </div>
             </div>
-            <div class="repostas">
-                ${renderizarAlternativas()}
-            </div>
-        </div>
         `;
 }
 
@@ -92,11 +91,7 @@ function montarQuiz(quizzArray) {
 
   //Construção do quadro de perguntas e respostas
 
-    numeroDePerguntas = estruturaQuizz.questoes.length
-
-    for (let i = 0; i < numeroDePerguntas; i++) {
-        montarQuadro(i)
-    }
+  numeroDePerguntas = estruturaQuizz.questoes.length;
 
   for (let i = 0; i < numeroDePerguntas; i++) {
     montarQuadro(i);
@@ -108,59 +103,55 @@ function selecionarResposta(resposta) {
   resposta.classList.add("item-selecionado"); //adiciona a classe no item selecionado como resposta
   console.log(resposta);
 
-    perguntaRespondida++ // Controla quantas perguntas foram respondidas
-    resposta.classList.add('item-selecionado'); //adiciona a classe no item selecionado como resposta
-    console.log(resposta)  
-    
-    if(resposta.classList.contains('true')){
-        resposta.classList.add('correto')
-        numeroAcertos++
+  perguntaRespondida++; // Controla quantas perguntas foram respondidas
+  resposta.classList.add("item-selecionado"); //adiciona a classe no item selecionado como resposta
+  console.log(resposta);
 
-    }else{
-        resposta.classList.add('errado')
-    }
-    
-    let testeResposta = ''
-    const divRespostas = resposta.parentNode //Seleciona toda a div que pertence a resposta
-    
-    setTimeout(scrollPergunta, 2000, divRespostas)
-    //divRespostas.scrollIntoView(true)
+  if (resposta.classList.contains("true")) {
+    resposta.classList.add("correto");
+    numeroAcertos++;
+  } else {
+    resposta.classList.add("errado");
+  }
 
+  let testeResposta = "";
+  const divRespostas = resposta.parentNode.parentNode; //Seleciona toda a div que pertence a resposta
 
+  setTimeout(() => {
+    divRespostas.nextElementSibling.scrollIntoView({
+      behavior: "smooth",
+      block: "end",
+      inline: "nearest",
+    });
+  }, 2000);
+  //divRespostas.scrollIntoView(true)
 
-    //percorrore por todos os filhos da divResposta
-    for (let i = 0; i < alternativas.length; i++) {
-        testeResposta = divRespostas.children[i] //recebe o filho da iteração
-        console.log('iteração:' + i)
-        console.log(testeResposta)
-        testeResposta.setAttribute("onclick", " ")
+  //percorrore por todos os filhos da divResposta
+  for (let i = 0; i < alternativas.length; i++) {
+    testeResposta = divRespostas.children[i]; //recebe o filho da iteração
+    console.log("iteração:" + i);
+    console.log(testeResposta);
+    testeResposta.setAttribute("onclick", " ");
 
-        //Se o filho não tiver a classe ele item-selecionado ele recebe a classe esbranquicado
-        if (!testeResposta.classList.contains('item-selecionado')) {
-            testeResposta.children[0].classList.add('esbranquicado');
-        }
-    }
-
-    if (perguntaRespondida === numeroDePerguntas){
-        resultadoDoQuizz(numeroAcertos, numeroDePerguntas, estruturaQuizz.level);
+    //Se o filho não tiver a classe ele item-selecionado ele recebe a classe esbranquicado
+    if (!testeResposta.classList.contains("item-selecionado")) {
+      testeResposta.children[0].classList.add("esbranquicado");
     }
   }
 
-
-function scrollPergunta(perguntaAtual){
-    perguntaAtual.scrollIntoView(true)
+  if (perguntaRespondida === numeroDePerguntas) {
+    resultadoDoQuizz(numeroAcertos, numeroDePerguntas, estruturaQuizz.level);
+  }
 }
 
-function resultadoDoQuizz(numeroAcertos, numeroDePerguntas, level){
-    let resultado = Math.round((numeroAcertos/numeroDePerguntas)*100)
-    console.log(resultado)
+function resultadoDoQuizz(numeroAcertos, numeroDePerguntas, level) {
+  let resultado = Math.round((numeroAcertos / numeroDePerguntas) * 100);
+  console.log(resultado);
 
-    for (let i=0; i<level.length; i++){
-        if (resultado <= level[i].minValuae){
-            console.log('seu nível é: ')
-            console.log(level[i].title)
-        }
-
+  for (let i = 0; i < level.length; i++) {
+    if (resultado <= level[i].minValuae) {
+      console.log("seu nível é: ");
+      console.log(level[i].title);
     }
-
+  }
 }

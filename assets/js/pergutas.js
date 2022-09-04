@@ -1,9 +1,12 @@
 
-let idQuizz= 1;
+// let idQuizz= 1;
 // console.log(idQuizz);
 let alternativas = [];
 let estruturaQuizz;
 let perguntas;
+let numeroAcertos = 0;
+let numeroDePerguntas = 0;
+let perguntaRespondida = 0;
 
 /**
  * Responsavel por trocar de tela entre todos os quizzes e o quiz em especifico
@@ -16,7 +19,7 @@ function carregarQuiz(el){
     tela1.classList.add('escondido');
     abriuQuizz.classList.remove('escondido');
     abriuQuizz.scrollIntoView();
-    // idQuizz = el.id;
+    idQuizz = el.id;
 
   const promessa = axios.get(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/${idQuizz}`);
 promessa.then(montarQuiz)
@@ -91,7 +94,7 @@ function montarQuiz(quizzArray) {
 
     //Construção do quadro de perguntas e respostas
 
-    const numeroDePerguntas = estruturaQuizz.questoes.length
+    numeroDePerguntas = estruturaQuizz.questoes.length
 
     for (let i = 0; i < numeroDePerguntas; i++) {
         montarQuadro(i)
@@ -102,33 +105,58 @@ function montarQuiz(quizzArray) {
 //Quando o usuário selecionar uma resposta está função será chamada
 function selecionarResposta(resposta) {
 
+    perguntaRespondida++ // Controla quantas perguntas foram respondidas
     resposta.classList.add('item-selecionado'); //adiciona a classe no item selecionado como resposta
     console.log(resposta)  
     
     if(resposta.classList.contains('true')){
         resposta.classList.add('correto')
+        numeroAcertos++
+
     }else{
         resposta.classList.add('errado')
     }
     
     let testeResposta = ''
-    const divRespostas = resposta.parentNode; //Seleciona toda a div que pertence a resposta
+    const divRespostas = resposta.parentNode //Seleciona toda a div que pertence a resposta
+    
+    setTimeout(scrollPergunta, 2000, divRespostas)
+    //divRespostas.scrollIntoView(true)
 
 
 
     //percorrore por todos os filhos da divResposta
     for (let i = 0; i < alternativas.length; i++) {
-        testeResposta = divRespostas.children[i]; //recebe o filho da iteração
+        testeResposta = divRespostas.children[i] //recebe o filho da iteração
         console.log('iteração:' + i)
         console.log(testeResposta)
         testeResposta.setAttribute("onclick", " ")
-        // testeResposta.onclick = "a"
 
         //Se o filho não tiver a classe ele item-selecionado ele recebe a classe esbranquicado
         if (!testeResposta.classList.contains('item-selecionado')) {
             testeResposta.children[0].classList.add('esbranquicado');
         }
+    }
 
+    if (perguntaRespondida === numeroDePerguntas){
+        resultadoDoQuizz(numeroAcertos, numeroDePerguntas, estruturaQuizz.level);
+    }
+}
+
+function scrollPergunta(perguntaAtual){
+    perguntaAtual.scrollIntoView(true)
+}
+
+function resultadoDoQuizz(numeroAcertos, numeroDePerguntas, level){
+    let resultado = Math.round((numeroAcertos/numeroDePerguntas)*100)
+    console.log(resultado)
+
+    for (let i=0; i<level.length; i++){
+        if (resultado <= level[i].minValuae){
+            console.log('seu nível é: ')
+            console.log(level[i].title)
+        }
 
     }
+
 }

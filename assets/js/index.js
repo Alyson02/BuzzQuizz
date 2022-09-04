@@ -27,7 +27,7 @@ async function carregarQuizzes() {
     </div>
     `;
   });
-  
+  console.log(quizzes[0])
 }
 
 

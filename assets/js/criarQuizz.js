@@ -5,14 +5,15 @@ const quizz = {
   levels: [],
 };
 
-
 let numLeveis = 0;
 let numPerguntas = 0;
 
-let arrayLocalStorage=[];
+let arrayLocalStorage = [];
 let stringLocalStorage;
 let getStringLS;
-let getArrayLS=[];
+let getArrayLS = [];
+let cMeusQuizzes = [];
+let tdsQuizzes = [];
 
 /**
  * Responsável por mudar para tela de criação de quizz e criação do quizz
@@ -506,13 +507,13 @@ async function finalizarForm() {
     .post("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes", quizz)
     .then((r) => {
       idQuizz = r.data.id;
-      tam
-      console.log(r.data, "só pra grantir")
+      tam;
+      console.log(r.data, "só pra grantir");
     })
     .catch((e) => console.log(e));
 
-    //Passando o id do quizz para o array que vai entrar no local storage
-    arrayLocalStorage.push(idQuizz);
+  //Passando o id do quizz para o array que vai entrar no local storage
+  arrayLocalStorage.push(idQuizz);
 
   const formFinal = document.querySelector(".formulario-final");
   formFinal.classList.remove("escondido");
@@ -582,21 +583,39 @@ getStringLS = localStorage.getItem("id");
 getArrayLS = JSON.parse(getStringLS);
 //mostrar os quizzes com id igual
 
-//Ao invés de fazer pela length, posso só colocar pra mostrar os 
+//Ao invés de fazer pela length, posso só colocar pra mostrar os
 //Quizzes que tiverem esse id
 
-//Além disso devo fazer um if pra mostrar Criar quizz ou 
+//Além disso devo fazer um if pra mostrar Criar quizz ou
 //Seus quizzes dependendo do meu local storage
-let divCriarQuizz = document.querySelector('.criar-quizz');
-let divSeusQuizzes = document.querySelector('.seus-quizzes');
-if(getArrayLS.length != 0){
+let divCriarQuizz = document.querySelector(".criar-quizz");
+let divSeusQuizzes = document.querySelector(".seus-quizzes");
+if (getArrayLS.length != 0) {
   //Mostrar Seus quizzes
-  divCriarQuizz.classList.add('escondido');
-  divSeusQuizzes.classList.remove('escondido');
-}
-else {
-  divCriarQuizz.classList.remove('escondido');
-  divSeusQuizzes.classList.add('escondido');
+  divCriarQuizz.classList.add("escondido");
+  divSeusQuizzes.classList.remove("escondido");
+} else {
+  divCriarQuizz.classList.remove("escondido");
+  divSeusQuizzes.classList.add("escondido");
   //Mostrar aba para criar quizz
 }
-console.log(arrayLocalStorage)
+console.log(arrayLocalStorage);
+
+function verificarSeEhMeu(elemento) {
+  //Se o id do quizz tá no array do local Storage, true
+  if (getArrayLS.includes(elemento.id)) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+function carregarMeusQuizzes() {
+  let promessa1 = axios.get(`${urlBase}/quizzes`);
+  promessa1.then((q) => (tdsQuizzes = q.data));
+  promessa1.catch(console.log("deu ruim"));
+
+  cMeusQuizzes = tdsQuizzes.filter(verificarSeEhMeu);
+}
+
+carregarMeusQuizzes();

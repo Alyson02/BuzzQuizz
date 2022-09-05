@@ -202,6 +202,11 @@ function exibirResultado(
 
   const botoes = document.querySelector(".fim-do-quizz");
   botoes.classList.remove("escondido");
+
+  setTimeout(() => {botoes.scrollIntoView({ behavior: "smooth"})
+    
+  }, 2000);
+  
 }
 
 //Função para recarregar o quizz
@@ -226,4 +231,6 @@ function recarregarQuizz() {
   const topo = document.querySelector(".questoes");
 
   topo.scrollIntoView(false);
+  perguntaRespondida = 0;
+  numeroAcertos = 0;
 }

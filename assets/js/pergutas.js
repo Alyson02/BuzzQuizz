@@ -1,4 +1,4 @@
-let idQuizz = 1;
+let idQuizz = 12157;
 let alternativas = [];
 let estruturaQuizz;
 let perguntas;
@@ -81,11 +81,8 @@ function montarQuiz(quizzArray) {
   // console.log(itensQuizz);
 
   //Construção do cabeçalho com imagem e texto
-  const textoCabecalho = document.querySelector(
-    ".cabecalho-quizz .texto-janela-quizz"
-  );
+  const textoCabecalho = document.querySelector(".cabecalho-quizz .texto-janela-quizz");
   textoCabecalho.innerHTML = estruturaQuizz.titulo;
-
   const imgCabecalho = document.querySelector(".cabecalho-quizz img");
   imgCabecalho.src = estruturaQuizz.imagemTitulo;
 
@@ -119,7 +116,7 @@ function selecionarResposta(resposta) {
 
   // Rolagem para proxima pergunta
   setTimeout(() => {
-    if(divRespostas.parentNode.nextElementSibling){
+    if (divRespostas.parentNode.nextElementSibling) {
       divRespostas.parentNode.nextElementSibling.scrollIntoView({
         behavior: "smooth",
         block: "end",
@@ -160,7 +157,7 @@ function resultadoDoQuizz(numeroAcertos, numeroDePerguntas, level) {
       break; // Interrompe o for, pois não precisa mais percorrer os níveis inferiores
     }
   }
-  
+
   // Chama a função que irá exibir a tela de resultado
   // precisa enviar o valorPontuacao, titulo, imagem e texto 
   exibirResultado(valorPontuacao, tituloPontuacaco, imagemPountuacao, textoPontuacaco)
@@ -178,7 +175,7 @@ function compare(a, b) {
 
 //Função que exibe a tela de resultado do Quizz
 //
-function exibirResultado(valorPontuacao, tituloPontuacao, imagemPountuacao, textoPontuacaco){
+function exibirResultado(valorPontuacao, tituloPontuacao, imagemPountuacao, textoPontuacaco) {
 
   // Retira a classe escondido para exibir a tela de resultado
   const divResultado = document.querySelector('.quadro-geral-resultado')
@@ -194,6 +191,6 @@ function exibirResultado(valorPontuacao, tituloPontuacao, imagemPountuacao, text
 
   // Exibe o texto do resultado
   const divDrescicacoResposta = document.querySelector('.descricao-resposta')
-  divDrescicacoResposta.innerHTML =  textoPontuacaco
-  
+  divDrescicacoResposta.innerHTML = textoPontuacaco
+
 }

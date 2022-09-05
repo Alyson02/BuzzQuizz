@@ -530,7 +530,7 @@ async function finalizarForm() {
       <div class="texto-quizz">${quizz.title}</div>
     </div>
     <p onclick="reload()">Voltar pra home</p>
-    <button onclick="acessarQuiz(${idQuizz})">Acessar Quizz</button>
+    <button onclick="acessarQuiz(${idQuizz}) ">Acessar Quizz</button>
   `;
 }
 

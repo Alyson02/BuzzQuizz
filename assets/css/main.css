@@ -534,7 +534,7 @@ h2 {
   background-color: #ffffff;
   width: 759px;
   height: auto;
-  padding:18px 14px 18px 18px;
+  padding: 18px 14px 18px 18px;
 }
 .retangulo-resultado {
   background-color: #ec362d;
@@ -568,7 +568,7 @@ h2 {
 }
 .descricao-resposta {
   font-family: "Roboto";
-  width:328px;
+  width: 328px;
   font-size: 19px;
   font-weight: 700;
   line-height: 25px;
@@ -580,7 +580,45 @@ h2 {
   text-overflow: ellipsis;
   color: #484848;
 }
+.fim-do-quizz {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.fim-do-quizz button {
+  background: #ec362d;
+  width: 260.38px;
+  height: 52px;
+  font-weight: 400;
+  font-size: 21px;
+  line-height: 25px;
+  color: #fff5f4;
+  border-radius: 15px;
+  border: none;
+  margin-top: 57px;
+  transition: ease-in-out all 0.6;
+  margin-bottom: 16px;
+}
 
+.fim-do-quizz button:hover {
+  cursor: pointer;
+  background-color: #ec180d;
+}
+
+.fim-do-quizz p {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: "Roboto";
+  font-size: 21px;
+  font-weight: 400;
+  line-height: 25px;
+  letter-spacing: 0em;
+  text-align: center;
+  color: #818181;
+  cursor:pointer;
+}
 /* classe pra esconder as coisas e trocar de tela, vou deixando ela mais abaixo no codigo css */
 .escondido {
   display: none;

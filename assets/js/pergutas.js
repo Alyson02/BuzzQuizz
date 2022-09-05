@@ -225,4 +225,6 @@ function recarregarQuizz() {
   const topo = document.querySelector(".questoes");
 
   topo.scrollIntoView(false);
+  perguntaRespondida = 0;
+  numeroAcertos = 0;
 }

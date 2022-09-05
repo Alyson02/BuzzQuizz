@@ -8,7 +8,7 @@ const quizz = {
 let numLeveis = 0;
 let numPerguntas = 0;
 
-let arrayLocalStorage = JSON.stringify(localStorage.getItem("id") ?? []);
+let arrayLocalStorage = localStorage.getItem("id") ?? JSON.stringify([]);
 let stringLocalStorage;
 let getStringLS;
 let getArrayLS = [];
@@ -532,8 +532,8 @@ async function finalizarForm() {
       <img src="${quizz.image}" />
       <div class="texto-quizz">${quizz.title}</div>
     </div>
-    <p onclick="reload()">Voltar pra home</p>
     <button onclick="acessarQuiz(${idQuizz}) ">Acessar Quizz</button>
+    <p onclick="reload()">Voltar pra home</p>
   `;
 }
 

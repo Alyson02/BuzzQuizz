@@ -17,7 +17,7 @@ function carregarQuiz(el) {
   tela1.classList.add("escondido");
   abriuQuizz.classList.remove("escondido");
   abriuQuizz.scrollIntoView();
-  //idQuizz = el.id;
+  idQuizz = el.id;
   habilitarSpinner()
   const promessa = axios.get(
     `https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/${idQuizz}`
@@ -58,10 +58,10 @@ function montarQuadro(ordemPergunta) {
   alternativas.sort(comparador); //embaralha as alternativas
 
   const quadrosRespostas = document.querySelector(".questoes");
-  quadrosRespostas.innerHTML += `
+  quadrosRespostas.innerHTML += /*html*/`
         <div class="quadro-respostas">
             <div class="cabecalho-quadro-respostas" style="background-color: ${corPergunta}">
-                ${tituloPergunta}
+                <h2 class="titulo-pergunta">${tituloPergunta}</h2>
             </div>
             <div class="repostas">
                  ${renderizarAlternativas()}
@@ -82,7 +82,7 @@ function montarQuiz(quizzArray) {
 
   //Construção do cabeçalho com imagem e texto
   const textoCabecalho = document.querySelector(".cabecalho-quizz .texto-janela-quizz");
-  textoCabecalho.innerHTML = estruturaQuizz.titulo;
+  textoCabecalho.innerHTML = `<h1 class="titulo-quizz">${estruturaQuizz.titulo}</h1>`;
   const imgCabecalho = document.querySelector(".cabecalho-quizz img");
   imgCabecalho.src = estruturaQuizz.imagemTitulo;
 

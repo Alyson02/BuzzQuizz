@@ -8,7 +8,7 @@ const quizz = {
 let numLeveis = 0;
 let numPerguntas = 0;
 
-const arrayLocalStorage = [];
+let arrayLocalStorage = JSON.stringify(localStorage.getItem("id") ?? []);
 let stringLocalStorage;
 let getStringLS;
 let getArrayLS = [];
@@ -513,6 +513,7 @@ async function finalizarForm() {
     .catch((e) => console.log(e));
 
   //Passando o id do quizz para o array que vai entrar no local storage
+  arrayLocalStorage = JSON.parse(arrayLocalStorage);
   arrayLocalStorage.push(idQuizz);
 
   //Transformar array de id em string
@@ -578,41 +579,12 @@ function verificarResposta(inputTexto, inputImagem) {
   }
   return false;
 }
-//Pegar string do localStorage
-getStringLS = localStorage.getItem("id");
-//Transformar string do localStorage em array
-getArrayLS = JSON.parse(getStringLS);
-//mostrar os quizzes com id igual
-
-//Ao invés de fazer pela length, posso só colocar pra mostrar os
-//Quizzes que tiverem esse id
-
-//Além disso devo fazer um if pra mostrar Criar quizz ou
-//Seus quizzes dependendo do meu local storage
-let divCriarQuizz = document.querySelector(".criar-quizz");
-let divSeusQuizzes = document.querySelector(".seus-quizzes");
-if (getArrayLS.length != 0) {
-  //Mostrar Seus quizzes
-  divCriarQuizz.classList.add("escondido");
-  divSeusQuizzes.classList.remove("escondido");
-  //Arranjar alguma forma de mostrar o quizz que criei pelos IDS deles
-} else {
-  divCriarQuizz.classList.remove("escondido");
-  divSeusQuizzes.classList.add("escondido");
-  //Mostrar aba para criar quizz
-}
-console.log(arrayLocalStorage);
-
-function verificarSeEhMeu(elemento) {
-  //Se o id do quizz tá no array do local Storage, true
-  if (getArrayLS.includes(elemento.id)) {
-    return true;
-  } else {
-    return false;
-  }
-}
 
 async function carregarMeusQuizzes() {
+  //Transformar string do localStorage em array
+  getArrayLS = JSON.parse(arrayLocalStorage);
+  //mostrar os quizzes com id igual
+
   await axios
     .get(`${urlBase}/quizzes`)
     .then((r) => (tdsQuizzes = r.data))
@@ -628,15 +600,33 @@ async function carregarMeusQuizzes() {
     }
   });
 
-  const containerMeusQuizzes = document.querySelector(".todos-meus-quizzes");
+  //Ao invés de fazer pela length, posso só colocar pra mostrar os
+  //Quizzes que tiverem esse id
 
-  cMeusQuizzes.forEach((quiz) => {
-    containerMeusQuizzes.innerHTML += `
+  //Além disso devo fazer um if pra mostrar Criar quizz ou
+  //Seus quizzes dependendo do meu local storage
+  let divCriarQuizz = document.querySelector(".criar-quizz");
+  let divSeusQuizzes = document.querySelector(".seus-quizzes");
+  if (cMeusQuizzes.length > 0) {
+    //Mostrar Seus quizzes
+    divCriarQuizz.classList.add("escondido");
+    divSeusQuizzes.classList.remove("escondido");
+    //Arranjar alguma forma de mostrar o quizz que criei pelos IDS deles
+
+    const containerMeusQuizzes = document.querySelector(".todos-meus-quizzes");
+
+    cMeusQuizzes.forEach((quiz) => {
+      containerMeusQuizzes.innerHTML += `
     <div class="quizz" onclick="carregarQuiz(this)" id="${quiz.id}">
         <img src="${quiz.image}" />
         <div class="texto-quizz">${quiz.title}</div>
     </div>
     `;
-  });
+    });
+  } else {
+    divCriarQuizz.classList.remove("escondido");
+    divSeusQuizzes.classList.add("escondido");
+  }
+  console.log(arrayLocalStorage);
 }
 carregarMeusQuizzes();

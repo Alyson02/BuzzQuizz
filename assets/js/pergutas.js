@@ -56,7 +56,7 @@ function montarQuadro(ordemPergunta) {
 
   alternativas.sort(comparador); //embaralha as alternativas
 
-  const quadrosRespostas = document.querySelector(".respostas-quizz");
+  const quadrosRespostas = document.querySelector(".questoes");
   quadrosRespostas.innerHTML += `
         <div class="quadro-respostas">
             <div class="cabecalho-quadro-respostas" style="background-color: ${corPergunta}">
@@ -116,16 +116,17 @@ function selecionarResposta(resposta) {
   const divRespostas = resposta.parentNode //Seleciona toda a div que pertence a resposta
 
   console.log('divRespostaNext')
-  console.log(divRespostas.nextElementSibling)
+  console.log(divRespostas.parentNode.nextElementSibling)
 
   setTimeout(() => {
-    divRespostas.nextElementSibling.scrollIntoView({
-      behavior: "smooth",
-      block: "end",
-      inline: "nearest",
-    });
+    if(divRespostas.parentNode.nextElementSibling){
+      divRespostas.parentNode.nextElementSibling.scrollIntoView({
+        behavior: "smooth",
+        block: "end",
+        inline: "nearest",
+      });
+    }
   }, 2000);
-  divRespostas.scrollIntoView(true)
 
 
   //percorrore por todos os filhos da divResposta

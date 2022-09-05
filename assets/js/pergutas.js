@@ -109,6 +109,7 @@ function selecionarResposta(resposta) {
     if(resposta.classList.contains('true')){
         resposta.classList.add('correto')
         numeroAcertos++
+    }
 
   if (resposta.classList.contains("true")) {
     resposta.classList.add("correto");

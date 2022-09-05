@@ -50,6 +50,7 @@ function renderizarAlternativas() {
 //Monta o Quadro de Perguntas e respostas
 function montarQuadro(ordemPergunta) {
   perguntas = estruturaQuizz.questoes;
+  let mudarSeBranco = ""
 
   tituloPergunta = perguntas[ordemPergunta].title;
   alternativas = perguntas[ordemPergunta].answers;
@@ -57,11 +58,15 @@ function montarQuadro(ordemPergunta) {
 
   alternativas.sort(comparador); //embaralha as alternativas
 
+  if(corPergunta == "#ffffff"){
+    mudarSeBranco = "color:black"
+  }
+
   const quadrosRespostas = document.querySelector(".questoes");
   quadrosRespostas.innerHTML += /*html*/`
         <div class="quadro-respostas">
             <div class="cabecalho-quadro-respostas" style="background-color: ${corPergunta}">
-                <h2 class="titulo-pergunta">${tituloPergunta}</h2>
+                <h2 style="${mudarSeBranco}" class="titulo-pergunta">${tituloPergunta}</h2>
             </div>
             <div class="repostas">
                  ${renderizarAlternativas()}

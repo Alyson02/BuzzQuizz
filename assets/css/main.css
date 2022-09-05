@@ -737,7 +737,7 @@ h2 {
 /*Load*/
 
 .titulo-pergunta {
-  color: white !important;
+  color: white;
   width: 100%;
 }
 
@@ -805,6 +805,7 @@ h2 {
   .alternativa .legenda {
     font-size: 13px;
     line-height: 15px;
+    width: 163px;
   }
   .respostas-quizz .repostas {
     gap: 12px;

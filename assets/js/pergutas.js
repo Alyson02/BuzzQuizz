@@ -17,7 +17,7 @@ function carregarQuiz(el) {
   tela1.classList.add("escondido");
   abriuQuizz.classList.remove("escondido");
   abriuQuizz.scrollIntoView();
-  // idQuizz = el.id;
+  idQuizz = el.id;
 
   const promessa = axios.get(
     `https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/${idQuizz}`
@@ -166,4 +166,8 @@ function compare(a, b) {
   if (a.nome > b.nome)
     return 1;
   return 0;
+}
+
+function refazerQuizz(){
+  
 }

@@ -1,6 +1,4 @@
-
-let idQuizz= 1;
-// console.log(idQuizz);
+let idQuizz = 1;
 let alternativas = [];
 let estruturaQuizz;
 let perguntas;
@@ -37,13 +35,13 @@ function renderizarAlternativas() {
   let a = "";
   for (let i = 0; i < alternativas.length; i++) {
     a += `
-            <div class="alternativa ${alternativas[i].isCorrectAnswer}" onclick="selecionarResposta(this)">
-                <div>
-                    <img src="${alternativas[i].image}">
-                </div>
-                <div class="legenda">${alternativas[i].text}</div>
-            </div>
-       `;
+              <div class="alternativa ${alternativas[i].isCorrectAnswer}" onclick="selecionarResposta(this)">
+                  <div>
+                      <img src="${alternativas[i].image}">
+                  </div>
+                  <div class="legenda">${alternativas[i].text}</div>
+              </div>
+         `;
   }
 
   return a;
@@ -58,16 +56,16 @@ function montarQuadro(ordemPergunta) {
 
   alternativas.sort(comparador); //embaralha as alternativas
 
-  const quadrosRespostas = document.querySelector(".questoes");
-  quadrosRespostas.innerHTML += /*html*/ `
-            <div class="quadro-respostas">
-                <div class="cabecalho-quadro-respostas" style="background-color: ${corPergunta}">
-                    ${tituloPergunta}
-                </div>
-                <div class="repostas">
-                    ${renderizarAlternativas()}
-                </div>
+  const quadrosRespostas = document.querySelector(".respostas-quizz");
+  quadrosRespostas.innerHTML += `
+        <div class="quadro-respostas">
+            <div class="cabecalho-quadro-respostas" style="background-color: ${corPergunta}">
+                ${tituloPergunta}
             </div>
+            <div class="repostas">
+                 ${renderizarAlternativas()}
+             </div>
+        </div>
         `;
 }
 
@@ -93,33 +91,32 @@ function montarQuiz(quizzArray) {
 
   //Construção do quadro de perguntas e respostas
 
-    numeroDePerguntas = estruturaQuizz.questoes.length
+  numeroDePerguntas = estruturaQuizz.questoes.length
 
-    for (let i = 0; i < numeroDePerguntas; i++) {
-        montarQuadro(i)
-    }
+  for (let i = 0; i < numeroDePerguntas; i++) {
+    montarQuadro(i)
+  }
 }
 
 //Quando o usuário selecionar uma resposta está função será chamada
 function selecionarResposta(resposta) {
   resposta.classList.add("item-selecionado"); //adiciona a classe no item selecionado como resposta
 
-    perguntaRespondida++ // Controla quantas perguntas foram respondidas
-    resposta.classList.add('item-selecionado'); //adiciona a classe no item selecionado como resposta
+  perguntaRespondida++ // Controla quantas perguntas foram respondidas
+  resposta.classList.add('item-selecionado'); //adiciona a classe no item selecionado como resposta
 
-    if(resposta.classList.contains('true')){
-        resposta.classList.add('correto')
-        numeroAcertos++
-    }
-  if (resposta.classList.contains("true")) {
-    resposta.classList.add("correto");
-    numeroAcertos++;
+  if (resposta.classList.contains('true')) {
+    resposta.classList.add('correto')
+    numeroAcertos++
   } else {
-    resposta.classList.add("errado");
+    resposta.classList.add('errado')
   }
 
-  let testeResposta = "";
-  const divRespostas = resposta.parentNode.parentNode; //Seleciona toda a div que pertence a resposta
+  let testeResposta = ''
+  const divRespostas = resposta.parentNode //Seleciona toda a div que pertence a resposta
+
+  console.log('divRespostaNext')
+  console.log(divRespostas.nextElementSibling)
 
   setTimeout(() => {
     divRespostas.nextElementSibling.scrollIntoView({
@@ -128,47 +125,44 @@ function selecionarResposta(resposta) {
       inline: "nearest",
     });
   }, 2000);
-  //divRespostas.scrollIntoView(true)
+  divRespostas.scrollIntoView(true)
 
-    //percorrore por todos os filhos da divResposta
-    for (let i = 0; i < alternativas.length; i++) {
-        testeResposta = divRespostas.children[i] //recebe o filho da iteração
 
-        testeResposta.setAttribute("onclick", " ")
+  //percorrore por todos os filhos da divResposta
+  for (let i = 0; i < alternativas.length; i++) {
+    testeResposta = divRespostas.children[i] //recebe o filho da iteração
 
+    testeResposta.setAttribute("onclick", " ")
     //Se o filho não tiver a classe ele item-selecionado ele recebe a classe esbranquicado
-    if (!testeResposta.classList.contains("item-selecionado")) {
-      testeResposta.children[0].classList.add("esbranquicado");
+    if (!testeResposta.classList.contains('item-selecionado')) {
+      testeResposta.children[0].classList.add('esbranquicado');
     }
   }
-
   if (perguntaRespondida === numeroDePerguntas) {
     resultadoDoQuizz(numeroAcertos, numeroDePerguntas, estruturaQuizz.level);
   }
 }
 
-function resultadoDoQuizz(numeroAcertos, numeroDePerguntas, level){
-    let resultado = Math.round((numeroAcertos/numeroDePerguntas)*100)
-    
-    console.log('resultado: ' + resultado)
-    level.sort(compare);
-    console.log(level)
+function resultadoDoQuizz(numeroAcertos, numeroDePerguntas, level) {
+  let resultado = Math.round((numeroAcertos / numeroDePerguntas) * 100)
+  console.log(resultado)
 
-    for (let i=0; i<level.length; i++){
-        if (resultado >= level[i].minValue){
-            console.log('seu nível é: ')
-            pontuacao = level[i].title
-            break;
-        }
+  level.sort(compare);
+
+  for (let i = 0; i < level.length; i++) {
+    if (resultado >= level[i].minValue) {
+      console.log('seu nível é: ')
+      pontuacao = level[i].title
+      console.log(pontuacao)
+      break;
     }
-  console.log(pontuacao)
-} 
-
-function compare(a,b) {
-  if (a.minValue > b.minValue)
-     return -1;
-  if (a.nome > b.nome)
-    return 1;  
-  return 0;
+  }
 }
 
+function compare(a, b) {
+  if (a.minValue > b.minValue)
+    return -1;
+  if (a.nome > b.nome)
+    return 1;
+  return 0;
+}

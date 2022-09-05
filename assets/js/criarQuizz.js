@@ -502,10 +502,12 @@ function adicionarNiveis(niveis) {
 }
 
 async function finalizarForm() {
+  habilitarSpinner()
   let idQuizz;
   await axios
     .post("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes", quizz)
     .then((r) => {
+      desabilitarSpinner()
       idQuizz = r.data.id;
       tam;
       console.log(r.data, "só pra grantir");

@@ -18,7 +18,7 @@ function carregarQuiz(el) {
   abriuQuizz.classList.remove("escondido");
   abriuQuizz.scrollIntoView();
   //idQuizz = el.id;
-
+  habilitarSpinner()
   const promessa = axios.get(
     `https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/${idQuizz}`
   );
@@ -91,6 +91,7 @@ function montarQuiz(quizzArray) {
   for (let i = 0; i < numeroDePerguntas; i++) {
     montarQuadro(i);
   }
+  desabilitarSpinner()
 }
 
 //Quando o usuário selecionar uma resposta está função será chamada

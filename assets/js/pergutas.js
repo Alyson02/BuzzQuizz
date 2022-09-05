@@ -5,7 +5,7 @@ let perguntas;
 let numeroAcertos = 0;
 let numeroDePerguntas = 0;
 let perguntaRespondida = 0;
-let pontuacao = 0;
+// let textoPontuacaco = 0;
 
 /**
  * Responsavel por trocar de tela entre todos os quizzes e o quiz em especifico
@@ -47,6 +47,7 @@ function renderizarAlternativas() {
   return a;
 }
 
+//Monta o Quadro de Perguntas e respostas
 function montarQuadro(ordemPergunta) {
   perguntas = estruturaQuizz.questoes;
 
@@ -76,11 +77,10 @@ function montarQuiz(quizzArray) {
     titulo: itensQuizz.title,
     level: itensQuizz.levels,
     questoes: itensQuizz.questions,
-    //     alternativasQuizz: itensQuizz.questions
   };
-  console.log(itensQuizz);
-  //Construção do cabeçalho com imagem e texto
+  // console.log(itensQuizz);
 
+  //Construção do cabeçalho com imagem e texto
   const textoCabecalho = document.querySelector(
     ".cabecalho-quizz .texto-janela-quizz"
   );
@@ -90,12 +90,11 @@ function montarQuiz(quizzArray) {
   imgCabecalho.src = estruturaQuizz.imagemTitulo;
 
   //Construção do quadro de perguntas e respostas
-
   numeroDePerguntas = estruturaQuizz.questoes.length
-
   for (let i = 0; i < numeroDePerguntas; i++) {
     montarQuadro(i)
   }
+
 }
 
 //Quando o usuário selecionar uma resposta está função será chamada
@@ -115,9 +114,10 @@ function selecionarResposta(resposta) {
   let testeResposta = ''
   const divRespostas = resposta.parentNode //Seleciona toda a div que pertence a resposta
 
-  console.log('divRespostaNext')
-  console.log(divRespostas.parentNode.nextElementSibling)
+  // console.log('divRespostaNext')
+  // console.log(divRespostas.parentNode.nextElementSibling)
 
+  // Rolagem para proxima pergunta
   setTimeout(() => {
     if(divRespostas.parentNode.nextElementSibling){
       divRespostas.parentNode.nextElementSibling.scrollIntoView({
@@ -144,22 +144,29 @@ function selecionarResposta(resposta) {
   }
 }
 
+// Exibir Resultado do quiz
 function resultadoDoQuizz(numeroAcertos, numeroDePerguntas, level) {
-  let resultado = Math.round((numeroAcertos / numeroDePerguntas) * 100)
-  console.log(resultado)
+  let valorPontuacao = Math.round((numeroAcertos / numeroDePerguntas) * 100) //Calcula e aproxima o valor para número interiro
+  let tituloPontuacaco // Titulo associado a pontuação recebido da API
+  let textoPontuacaco // Texto associado a pontuação recebido da API
 
-  level.sort(compare);
+  level.sort(compare); // Organiza em ordem decrescente os nives de pontuação
 
-  for (let i = 0; i < level.length; i++) {
-    if (resultado >= level[i].minValue) {
-      console.log('seu nível é: ')
-      pontuacao = level[i].title
-      console.log(pontuacao)
-      break;
+  for (let i = 0; i < level.length; i++) { // Percorre o objeto da pountuação
+    if (valorPontuacao >= level[i].minValue) { //Se o resultado for >= que o minimo desejado para o nivel 
+      tituloPontuacaco = level[i].title // Recebe o titulo da pontuação
+      imagemPountuacao = level[i].image //Recebe o nivel da pontuação
+      textoPontuacaco = level[i].text // Recebe o texto da pontuação
+      break; // Interrompe o for, pois não precisa mais percorrer os níveis inferiores
     }
   }
+  
+  // Chama a função que irá exibir a tela de resultado
+  // precisa enviar o valorPontuacao, titulo, imagem e texto 
+  exibirResultado(valorPontuacao, tituloPontuacaco, imagemPountuacao, textoPontuacaco)
 }
 
+// Organiza o objeto level em ordem decrescente
 function compare(a, b) {
   if (a.minValue > b.minValue)
     return -1;
@@ -168,6 +175,25 @@ function compare(a, b) {
   return 0;
 }
 
-function refazerQuizz(){
+
+//Função que exibe a tela de resultado do Quizz
+//
+function exibirResultado(valorPontuacao, tituloPontuacao, imagemPountuacao, textoPontuacaco){
+
+  // Retira a classe escondido para exibir a tela de resultado
+  const divResultado = document.querySelector('.quadro-geral-resultado')
+  divResultado.classList.remove('escondido')
+
+  // Exibe o titulo do resultado
+  const divTituloResultado = document.querySelector('.titulo-resultado')
+  divTituloResultado.innerHTML = `${valorPontuacao}%: ${tituloPontuacao}`
+
+  // Exibe a imagem do resultado
+  const divCorpoResultadoImg = document.querySelector('.corpo-resultado img')
+  divCorpoResultadoImg.src = imagemPountuacao
+
+  // Exibe o texto do resultado
+  const divDrescicacoResposta = document.querySelector('.descricao-resposta')
+  divDrescicacoResposta.innerHTML =  textoPontuacaco
   
 }

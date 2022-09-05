@@ -1,4 +1,5 @@
-// let idQuizz= 1;
+
+let idQuizz= 1;
 // console.log(idQuizz);
 let alternativas = [];
 let estruturaQuizz;
@@ -109,7 +110,7 @@ function selecionarResposta(resposta) {
     if(resposta.classList.contains('true')){
         resposta.classList.add('correto')
         numeroAcertos++
-
+    }
   if (resposta.classList.contains("true")) {
     resposta.classList.add("correto");
     numeroAcertos++;
@@ -170,3 +171,4 @@ function compare(a,b) {
     return 1;  
   return 0;
 }
+

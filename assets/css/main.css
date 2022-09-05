@@ -359,14 +359,13 @@ h2 {
   text-overflow: ellipsis;
 }
 
-
-.correto{
-  color: #009C22;
+.correto {
+  color: #009c22;
 }
 
-.errado{
-  color: #FF4B4B;
-}  
+.errado {
+  color: #ff4b4b;
+}
 /*--------------------------------------------------------------------------
 ----------------------------CSS DOS FORMULARIOS-----------------------------
 --------------------------------------------------------------------------*/
@@ -525,6 +524,62 @@ h2 {
 /*--------------------------------------------------------------------------
 ----------------------------FIM DO CSS DOS FORMULARIOS-----------------------------
 --------------------------------------------------------------------------*/
+.quadro-geral-resultado {
+  display: flex;
+  justify-content: center;
+  margin-top: 44px;
+  margin-bottom: 57px;
+}
+.quadro-branco-resultado {
+  background-color: #ffffff;
+  width: 759px;
+  height: auto;
+  padding:18px 14px 18px 18px;
+}
+.retangulo-resultado {
+  background-color: #ec362d;
+  height: 99px;
+  width: 727px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 18px;
+}
+.titulo-resultado {
+  font-family: "Roboto";
+  font-size: 23px;
+  font-weight: 700;
+  line-height: 27px;
+  letter-spacing: 0em;
+  text-align: center;
+  color: #ffffff;
+  word-wrap: break-word;
+  flex-wrap: wrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.corpo-resultado img {
+  width: 364px;
+  height: 273px;
+  margin-right: 21px;
+}
+.corpo-resultado {
+  display: flex;
+}
+.descricao-resposta {
+  font-family: "Roboto";
+  width:328px;
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 25px;
+  letter-spacing: 0em;
+  text-align: left;
+  word-wrap: break-word;
+  flex-wrap: wrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #484848;
+}
 
 /* classe pra esconder as coisas e trocar de tela, vou deixando ela mais abaixo no codigo css */
 .escondido {
@@ -569,12 +624,10 @@ h2 {
   }
   .cabecalho-quizz::after {
     height: 142px;
-    
   }
   .cabecalho-quizz > img {
     height: 142px;
     object-position: 0 0;
-    
   }
   .texto-janela-quizz {
     font-size: 19px;

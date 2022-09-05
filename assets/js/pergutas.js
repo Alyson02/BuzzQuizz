@@ -6,6 +6,7 @@ let perguntas;
 let numeroAcertos = 0;
 let numeroDePerguntas = 0;
 let perguntaRespondida = 0;
+let pontuacao = 0;
 
 /**
  * Responsavel por trocar de tela entre todos os quizzes e o quiz em especifico
@@ -17,7 +18,7 @@ function carregarQuiz(el) {
   tela1.classList.add("escondido");
   abriuQuizz.classList.remove("escondido");
   abriuQuizz.scrollIntoView();
-  idQuizz = el.id;
+  // idQuizz = el.id;
 
   const promessa = axios.get(
     `https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/${idQuizz}`
@@ -91,21 +92,23 @@ function montarQuiz(quizzArray) {
 
   //Construção do quadro de perguntas e respostas
 
-  numeroDePerguntas = estruturaQuizz.questoes.length;
+    numeroDePerguntas = estruturaQuizz.questoes.length
 
-  for (let i = 0; i < numeroDePerguntas; i++) {
-    montarQuadro(i);
-  }
+    for (let i = 0; i < numeroDePerguntas; i++) {
+        montarQuadro(i)
+    }
 }
 
 //Quando o usuário selecionar uma resposta está função será chamada
 function selecionarResposta(resposta) {
   resposta.classList.add("item-selecionado"); //adiciona a classe no item selecionado como resposta
-  console.log(resposta);
 
-  perguntaRespondida++; // Controla quantas perguntas foram respondidas
-  resposta.classList.add("item-selecionado"); //adiciona a classe no item selecionado como resposta
-  console.log(resposta);
+    perguntaRespondida++ // Controla quantas perguntas foram respondidas
+    resposta.classList.add('item-selecionado'); //adiciona a classe no item selecionado como resposta
+
+    if(resposta.classList.contains('true')){
+        resposta.classList.add('correto')
+        numeroAcertos++
 
   if (resposta.classList.contains("true")) {
     resposta.classList.add("correto");
@@ -126,12 +129,11 @@ function selecionarResposta(resposta) {
   }, 2000);
   //divRespostas.scrollIntoView(true)
 
-  //percorrore por todos os filhos da divResposta
-  for (let i = 0; i < alternativas.length; i++) {
-    testeResposta = divRespostas.children[i]; //recebe o filho da iteração
-    console.log("iteração:" + i);
-    console.log(testeResposta);
-    testeResposta.setAttribute("onclick", " ");
+    //percorrore por todos os filhos da divResposta
+    for (let i = 0; i < alternativas.length; i++) {
+        testeResposta = divRespostas.children[i] //recebe o filho da iteração
+
+        testeResposta.setAttribute("onclick", " ")
 
     //Se o filho não tiver a classe ele item-selecionado ele recebe a classe esbranquicado
     if (!testeResposta.classList.contains("item-selecionado")) {
@@ -144,14 +146,27 @@ function selecionarResposta(resposta) {
   }
 }
 
-function resultadoDoQuizz(numeroAcertos, numeroDePerguntas, level) {
-  let resultado = Math.round((numeroAcertos / numeroDePerguntas) * 100);
-  console.log(resultado);
+function resultadoDoQuizz(numeroAcertos, numeroDePerguntas, level){
+    let resultado = Math.round((numeroAcertos/numeroDePerguntas)*100)
+    
+    console.log('resultado: ' + resultado)
+    level.sort(compare);
+    console.log(level)
 
-  for (let i = 0; i < level.length; i++) {
-    if (resultado <= level[i].minValuae) {
-      console.log("seu nível é: ");
-      console.log(level[i].title);
+    for (let i=0; i<level.length; i++){
+        if (resultado >= level[i].minValue){
+            console.log('seu nível é: ')
+            pontuacao = level[i].title
+            break;
+        }
     }
-  }
+  console.log(pontuacao)
+} 
+
+function compare(a,b) {
+  if (a.minValue > b.minValue)
+     return -1;
+  if (a.nome > b.nome)
+    return 1;  
+  return 0;
 }

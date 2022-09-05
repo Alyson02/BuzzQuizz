@@ -1,4 +1,4 @@
-let idQuizz = 1;
+let idQuizz = 11883;
 let alternativas = [];
 let estruturaQuizz;
 let perguntas;
@@ -17,7 +17,7 @@ function carregarQuiz(el) {
   tela1.classList.add("escondido");
   abriuQuizz.classList.remove("escondido");
   abriuQuizz.scrollIntoView();
-  idQuizz = el.id;
+  //idQuizz = el.id;
 
   const promessa = axios.get(
     `https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/${idQuizz}`
@@ -196,4 +196,23 @@ function exibirResultado(valorPontuacao, tituloPontuacao, imagemPountuacao, text
   const divDrescicacoResposta = document.querySelector('.descricao-resposta')
   divDrescicacoResposta.innerHTML =  textoPontuacaco
   
+}
+
+//Função para recarregar o quizz
+
+function recarregarQuizz(){
+  let abriuQuizz = document.querySelector(".questoes");
+  abriuQuizz.innerHTML = '';
+ 
+  const promessa = axios.get(
+    `https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/${idQuizz}`
+  );
+  promessa.then(montarQuiz);
+  promessa.catch((e) => console.log(e));
+
+
+  //renderizarAlternativas();
+  const topo = document.querySelector('.questoes');
+
+  topo.scrollIntoView(false);
 }

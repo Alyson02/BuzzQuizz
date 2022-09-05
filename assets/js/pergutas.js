@@ -1,4 +1,4 @@
-let idQuizz = 11883;
+let idQuizz = 12157;
 let alternativas = [];
 let estruturaQuizz;
 let perguntas;
@@ -81,11 +81,8 @@ function montarQuiz(quizzArray) {
   // console.log(itensQuizz);
 
   //Construção do cabeçalho com imagem e texto
-  const textoCabecalho = document.querySelector(
-    ".cabecalho-quizz .texto-janela-quizz"
-  );
+  const textoCabecalho = document.querySelector(".cabecalho-quizz .texto-janela-quizz");
   textoCabecalho.innerHTML = estruturaQuizz.titulo;
-
   const imgCabecalho = document.querySelector(".cabecalho-quizz img");
   imgCabecalho.src = estruturaQuizz.imagemTitulo;
 

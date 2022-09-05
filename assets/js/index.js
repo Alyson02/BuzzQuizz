@@ -9,6 +9,7 @@ carregarQuizzes();
  * Assim, é só colocar um await onde vai ter uma promise
  */
 async function carregarQuizzes() {
+  habilitarSpinner()
   let quizzes = [];
 
   await axios
@@ -16,7 +17,7 @@ async function carregarQuizzes() {
     .then((r) => (quizzes = r.data))
     .then((s) => (tam = s.length))
     .catch((e) => console.log(e));
-
+  desabilitarSpinner()
   const section = document.querySelector(".todos-quizzes");
 
   quizzes.forEach((quiz) => {
@@ -32,4 +33,12 @@ async function carregarQuizzes() {
 
 function reload() {
   window.location.reload();
+}
+
+function habilitarSpinner(){
+  document.querySelector(".spinner").classList.remove("escondido");
+}
+
+function desabilitarSpinner() {
+  document.querySelector(".spinner").classList.add("escondido");
 }

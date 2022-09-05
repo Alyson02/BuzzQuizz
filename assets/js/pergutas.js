@@ -201,7 +201,11 @@ function exibirResultado(
 
   const botoes = document.querySelector(".fim-do-quizz");
   botoes.classList.remove("escondido");
-  botoes.scrollIntoView({ behavior: "smooth"});
+
+  setTimeout(() => {botoes.scrollIntoView({ behavior: "smooth"})
+    
+  }, 2000);
+  
 }
 
 //Função para recarregar o quizz

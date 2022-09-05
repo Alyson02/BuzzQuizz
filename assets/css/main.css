@@ -810,7 +810,7 @@ h2 {
     gap: 12px;
   }
   .respostas-quizz .repostas img {
-    width: 100%;
+    width: 163px;
     height: 113px;
     object-fit: cover;
   }
@@ -867,7 +867,64 @@ h2 {
     line-height: 21px;
   }
   body {
-    padding-bottom: 50px;
+    padding-bottom: 30px;
+  }
+  .alternativa .esbranquicado::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 163px;
+    height: 113px;
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.6);
+  }
+  .respostas img {
+    width: 163px;
+    height: 113px;
+  }
+  .retangulo-resultado {
+    width: 340px;
+    height: 89px;
+  }
+  .corpo-resultado {
+    flex-direction: column;
+    width: 375px;
+    height: auto;
+  }
+  .corpo-resultado img {
+    width: 340px;
+    height: 255px;
+  }
+  .quadro-resultado {
+    width: 375px;
+    max-width: 759px;
+  }
+  .descricao-resposta {
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 20px;
+    letter-spacing: 0em;
+    text-align: left;
+    margin-top: 9px;
+  }
+
+  .fim-do-quizz button {
+    margin-top: -10px;
+    width: 220px;
+    height: 44px;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 21px;
+    letter-spacing: 0em;
+    text-align: center;
+  }
+  .fim-do-quizz p {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 21px;
+    letter-spacing: 0em;
+    text-align: center;
   }
 }
 

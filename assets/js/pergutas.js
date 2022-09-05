@@ -5,7 +5,7 @@ let perguntas;
 let numeroAcertos = 0;
 let numeroDePerguntas = 0;
 let perguntaRespondida = 0;
-let pontuacao = 0;
+// let textoPontuacaco = 0;
 
 /**
  * Responsavel por trocar de tela entre todos os quizzes e o quiz em especifico
@@ -126,7 +126,7 @@ function selecionarResposta(resposta) {
         inline: "nearest",
       });
     }
-  }, 2000);
+  }, 100);
 
 
   //percorrore por todos os filhos da divResposta
@@ -148,16 +148,22 @@ function resultadoDoQuizz(numeroAcertos, numeroDePerguntas, level) {
   let resultado = Math.round((numeroAcertos / numeroDePerguntas) * 100)
   console.log(resultado)
 
+  let tituloPontuacaco
+  let textoPontuacaco
+
   level.sort(compare);
 
   for (let i = 0; i < level.length; i++) {
     if (resultado >= level[i].minValue) {
       console.log('seu nível é: ')
-      pontuacao = level[i].title
-      console.log(pontuacao)
+      tituloPontuacaco = level[i].title
+      imagemPountuacao = level[i].image
+      textoPontuacaco = level[i].text
+      console.log(tituloPontuacaco)
       break;
     }
   }
+  exibirResultado(resultado, tituloPontuacaco, imagemPountuacao, textoPontuacaco)
 }
 
 function compare(a, b) {
@@ -166,4 +172,23 @@ function compare(a, b) {
   if (a.nome > b.nome)
     return 1;
   return 0;
+}
+
+
+//Função que exibe a tela de resultado do Quizz
+function exibirResultado(resultado, tituloPontuacao, imagemPountuacao, textoPontuacaco){
+  const divResultado = document.querySelector('.quadro-geral-resultado')
+  console.log(divResultado)
+
+  const divTituloResultado = document.querySelector('.titulo-resultado')
+  console.log(divTituloResultado)
+
+  const divCorpoResultadoImg = document.querySelector('.corpo-resultado img')
+  divCorpoResultadoImg.src = imagemPountuacao
+
+  const divDrescicacoResposta = document.querySelector('.descricao-resposta')
+  divDrescicacoResposta.innerHTML =  textoPontuacaco
+  
+  divTituloResultado.innerHTML = `${resultado}%: ${tituloPontuacao}`
+
 }

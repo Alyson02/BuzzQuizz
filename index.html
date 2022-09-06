@@ -26,7 +26,7 @@
       <div class="criar-quizz">
         <!--AQUI PODEMOS ADICIONAR A CLASSE 'escondido' se a pessoa já criou pelo menos 1 quizz-->
         <div class="frase">Você não criou nenhum Quizz ainda :(</div>
-        <div class="botao-criar" onclick="criarQuizz()">Criar Quizz</div>
+        <div class="botao-criar" onclick="criarQuizz()" data-identifier="create-quizz">Criar Quizz</div>
       </div>
       <!-- ================================================CAIXINHA CASO NÃO TENHA CRIADO QUIZZ====================================================== -->
       <!--####################################################CAIXINHA CASO TENHA CRIADO QUIZZES##################################################-->
@@ -34,16 +34,16 @@
         <div class="titulo-seus-quizzes">
           <!--AQUI PODEMOS ADICIONAR A CLASSE 'escondido' se a pessoa ainda não criou quizzes-->
           <h2>Seus Quizzes</h2>
-          <ion-icon name="add-circle" onclick="criarQuizz()"></ion-icon
+          <ion-icon name="add-circle" onclick="criarQuizz()" data-identifier="create-quizz"></ion-icon
           ><!--Aqui vai ser o botão para criar um novo quizz-->
         </div>
-        <div class="todos-meus-quizzes"></div>
+        <div class="todos-meus-quizzes" data-identifier="user-quizzes"></div>
       </div>
       <!--####################################################CAIXINHA CASO TENHA CRIADO##################################################-->
       <h1>Todos os Quizzes</h1>
 
       <!-- ========================================================SECTION CONTÉM O CONTAINER DOS DIVS====================================================== -->
-      <section class="todos-quizzes"></section>
+      <section class="todos-quizzes" data-identifier="general-quizzes"></section>
       <!-- ========================================================SECTION CONTÉM O CONTAINER DOS DIVS====================================================== -->
     </div>
 
@@ -66,23 +66,27 @@
             type="text"
             placeholder="Título do seu quizz"
           />
+          <p class="validacao"></p>
           <input
             id="imagem"
             type="text"
             placeholder="URL da imagem do seu quizz"
           />
+          <p class="validacao"></p>
           <input
             min="3"
             id="qtd-perguntas"
             type="number"
             placeholder="Quantidade de perguntas do quizz"
           />
+          <p class="validacao"></p>
           <input
             min="2"
             id="qtd-niveis"
             type="number"
             placeholder="Quantidade de níveis do quizz"
           />
+          <p class="validacao"></p>
         </fieldset>
       </form>
       <button>Prosseguir pra criar perguntas</button>
@@ -109,7 +113,7 @@
       alt=""
     />
     <!-- aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa -->
-    <div class="quadro-geral-resultado escondido">
+    <div class="quadro-geral-resultado escondido" data-identifier="quizz-result">
       <div class="quadro-resultado">
         <div class="retangulo-resultado">
           <div class="titulo-resultado">
@@ -164,41 +168,3 @@
     <script src="./assets/js/criarQuizz.js"></script>
   </body>
 </html>
-
-<!-- Estrutura das perguntas -->
-<!-- <div class="quadro-respostas">
-  <div class="cabecalho-quadro-respostas">
-    Em que episódio ocorre o casamento de Monica e Chandler?
-  </div>
-  <div class="repostas">
-
-    <div class="alternativa" onclick="selecionarResposta(this)">
-      <div>
-        <img src="./assets/imagens/gatineo.png" alt="">
-      </div>
-      <div class="legenda">Gatíneo</div>
-    </div>
-
-    <div class="alternativa" onclick="selecionarResposta(this)">
-      <div>
-        <img src="./assets/imagens/ratata.png" alt="">
-      </div>
-      <div class="legenda">Ratata</div>
-    </div>
-
-    <div class="alternativa" onclick="selecionarResposta(this)">
-      <div>
-        <img src="./assets/imagens/sapo-gordo.png" alt="">
-      </div>
-      <div class="legenda">Sapo Gordo</div>
-    </div>
-
-    <div class="alternativa" onclick="selecionarResposta(this)">
-      <div>
-        <img src="./assets/imagens/mustela-putorius.png" alt="">
-      </div>
-      <div class="legenda">Mustela putorius (o Furão)</div>
-    </div>
-    
-  </div>
-</div> -->

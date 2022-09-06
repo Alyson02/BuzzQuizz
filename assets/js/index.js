@@ -21,8 +21,8 @@ async function carregarQuizzes() {
   const section = document.querySelector(".todos-quizzes");
 
   quizzes.forEach((quiz) => {
-    section.innerHTML += `
-    <div class="quizz" onclick="carregarQuiz(this)" id="${quiz.id}">
+    section.innerHTML += /*html*/`
+    <div class="quizz" onclick="carregarQuiz(this)" id="${quiz.id}" data-identifier="quizz-card">
         <img src="${quiz.image}" />
         <div class="texto-quizz">${quiz.title}</div>
     </div>

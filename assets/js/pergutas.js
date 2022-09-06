@@ -35,7 +35,7 @@ function renderizarAlternativas() {
   let a = "";
   for (let i = 0; i < alternativas.length; i++) {
     a += `
-              <div class="alternativa ${alternativas[i].isCorrectAnswer}" onclick="selecionarResposta(this)">
+              <div class="alternativa ${alternativas[i].isCorrectAnswer}" onclick="selecionarResposta(this) data-identifier="answer"">
                   <div>
                       <img src="${alternativas[i].image}">
                   </div>
@@ -64,7 +64,7 @@ function montarQuadro(ordemPergunta) {
 
   const quadrosRespostas = document.querySelector(".questoes");
   quadrosRespostas.innerHTML += /*html*/`
-        <div class="quadro-respostas">
+        <div class="quadro-respostas" data-identifier="question">
             <div class="cabecalho-quadro-respostas" style="background-color: ${corPergunta}">
                 <h2 style="${mudarSeBranco}" class="titulo-pergunta">${tituloPergunta}</h2>
             </div>

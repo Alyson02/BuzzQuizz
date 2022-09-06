@@ -41,29 +41,72 @@ async function criarQuizz() {
     //valida informações
 
     let error = false;
+    let inputsErrors = [];
+    let inputsCorretos = [];
 
     console.log(inputQtdNiveis);
 
     if (!inputTitulo.checkValidity() || inputTitulo.value == "") {
       error = true;
-    } else if (
+      inputsErrors.push(inputTitulo);
+    }else{
+      inputsCorretos.push(inputTitulo);
+    }
+
+    if (
       !inputImagem.value.match(
         /(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g
       )
     ) {
       error = true;
-    } else if (
-      !inputQtdPerguntas.checkValidity() ||
-      inputQtdPerguntas.value == ""
-    ) {
+      inputsErrors.push(inputImagem);
+    }else{
+      inputsCorretos.push(inputImagem);
+    }
+
+    if (!inputQtdPerguntas.checkValidity() || inputQtdPerguntas.value == "") {
       error = true;
-    } else if (!inputQtdNiveis.checkValidity() || inputQtdNiveis.value == "") {
+      inputsErrors.push(inputQtdPerguntas);
+    }else{
+      inputsCorretos.push(inputQtdPerguntas);
+    }
+
+    if (!inputQtdNiveis.checkValidity() || inputQtdNiveis.value == "") {
       error = true;
-      console.log("ben");
+      inputsErrors.push(inputQtdNiveis);
+    }else{
+      inputsCorretos.push(inputQtdNiveis);
     }
 
     if (error) {
-      alert("Dados incorretos!");
+      inputsErrors.forEach((input) => {
+        const paragrafo = input.nextElementSibling;
+
+        switch (input.id) {
+          case "titulo":
+            paragrafo.textContent =
+              "O título deve ter entre 20 e 65 caracteres";
+            break;
+
+          case "imagem":
+            paragrafo.textContent = "O valor informado não é uma URL válida";
+            break;
+
+          case "qtd-perguntas":
+            paragrafo.textContent = "O quizz deve ter no mínimo 3 perguntas";
+            break;
+
+          case "qtd-niveis":
+            paragrafo.textContent = "O quizz deve ter no mínimo 2 níveis";
+          
+          default:
+            inputsCorretos.forEach(input => {
+              const paragrafo = input.nextElementSibling;
+              paragrafo.textContent = "";
+            });
+        }
+      });
+      inputsErrors = [];
       return;
     } else {
       quizz.title = inputTitulo.value;
@@ -86,7 +129,7 @@ function criarPerguntas() {
   for (let i = 1; i <= numPerguntas; i++) {
     if (i == 1) {
       perguntas.innerHTML += /*html*/ `
-        <form id="pergunta${i}" class="pergunta">
+        <form id="pergunta${i}" class="pergunta" data-identifier="question-form">
           <fieldset class="perguntaHeader">
             <legend>Pergunta ${i}</legend>
             <input
@@ -164,7 +207,7 @@ function criarPerguntas() {
       `;
     } else {
       perguntas.innerHTML += /*html*/ `
-        <form id="pergunta${i}" class="pergunta">
+        <form id="pergunta${i}" class="pergunta" data-identifier="expand">
           <div class="form-encolhido">
             <legend>Pergunta ${i}</legend>
             <svg
@@ -362,7 +405,7 @@ function criarLevels() {
   for (let i = 1; i <= numLeveis; i++) {
     if (i == 1) {
       niveis.innerHTML += /*html*/ `
-        <form>
+        <form data-identifier="level">
           <fieldset>
             <legend>Nivel 1</legend>
             <input
@@ -394,7 +437,7 @@ function criarLevels() {
       `;
     } else {
       niveis.innerHTML += /*html*/ `
-        <form id="nivel${i}">
+        <form id="nivel${i}" data-identifier="expand">
           <fieldset>
             <div class="form-encolhido">
               <legend>Nível 2</legend>
@@ -502,12 +545,12 @@ function adicionarNiveis(niveis) {
 }
 
 async function finalizarForm() {
-  habilitarSpinner()
+  habilitarSpinner();
   let idQuizz;
   await axios
     .post("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes", quizz)
     .then((r) => {
-      desabilitarSpinner()
+      desabilitarSpinner();
       idQuizz = r.data.id;
       tam;
       console.log(r.data, "só pra grantir");
@@ -619,7 +662,7 @@ async function carregarMeusQuizzes() {
 
     cMeusQuizzes.forEach((quiz) => {
       containerMeusQuizzes.innerHTML += `
-    <div class="quizz" onclick="carregarQuiz(this)" id="${quiz.id}">
+    <div class="quizz" onclick="carregarQuiz(this)" id="${quiz.id} data-identifier="quizz-card"">
         <img src="${quiz.image}" />
         <div class="texto-quizz">${quiz.title}</div>
     </div>

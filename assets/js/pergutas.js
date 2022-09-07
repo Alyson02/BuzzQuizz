@@ -35,7 +35,7 @@ function renderizarAlternativas() {
   let a = "";
   for (let i = 0; i < alternativas.length; i++) {
     a += `
-              <div class="alternativa ${alternativas[i].isCorrectAnswer}" onclick="selecionarResposta(this) data-identifier="answer"">
+              <div class="alternativa ${alternativas[i].isCorrectAnswer}" onclick="selecionarResposta(this)" data-identifier="answer">
                   <div>
                       <img src="${alternativas[i].image}">
                   </div>

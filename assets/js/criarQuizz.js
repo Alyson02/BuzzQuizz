@@ -662,7 +662,7 @@ async function carregarMeusQuizzes() {
 
     cMeusQuizzes.forEach((quiz) => {
       containerMeusQuizzes.innerHTML += `
-    <div class="quizz" onclick="carregarQuiz(this)" id="${quiz.id} data-identifier="quizz-card"">
+    <div class="quizz" onclick="carregarQuiz(this)" id="${quiz.id}" data-identifier="quizz-card">
         <img src="${quiz.image}" />
         <div class="texto-quizz">${quiz.title}</div>
     </div>
